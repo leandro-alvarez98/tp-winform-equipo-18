@@ -91,8 +91,9 @@
             this.DgwListaArticulos.Location = new System.Drawing.Point(248, 117);
             this.DgwListaArticulos.Name = "DgwListaArticulos";
             this.DgwListaArticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DgwListaArticulos.Size = new System.Drawing.Size(861, 210);
+            this.DgwListaArticulos.Size = new System.Drawing.Size(861, 294);
             this.DgwListaArticulos.TabIndex = 4;
+            this.DgwListaArticulos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgwListaArticulos_CellContentClick);
             // 
             // CbxCategorias
             // 
@@ -175,7 +176,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(314, 414);
+            this.label1.Location = new System.Drawing.Point(319, 486);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(695, 13);
             this.label1.TabIndex = 15;
@@ -202,6 +203,7 @@
             this.Name = "Ventana";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Aplicacion";
+            this.Load += new System.EventHandler(this.Ventana_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DgwListaArticulos)).EndInit();
             this.Panel1.ResumeLayout(false);
             this.ResumeLayout(false);

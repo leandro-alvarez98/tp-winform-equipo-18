@@ -4,16 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Dominio
+namespace dominio
 {
     public class Articulo
     {
-        private int codigo;
-        private String nombre;
-        private String descripcion;
-        private String marca;
-        private String categoria;
-        private String imagen;
-        private double precio;
+        public int ID {  get; set; }
+        public int codigo { get; set; }
+        public String nombre { get; set; }
+        public String descripcion { get; set; }
+        public String marca { get; set; }
+        public String categoria { get; set; }
+        public double precio { get; set; }
+        public string urlImagen { get; set; }
     }
 }
