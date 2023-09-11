@@ -15,7 +15,7 @@
         {
             if (disposing && (components != null))
             {
-                components.Dispose();
+                 components.Dispose();
             }
             base.Dispose(disposing);
         }
@@ -33,25 +33,36 @@
             this.BtnModificar = new System.Windows.Forms.Button();
             this.BtnDetalleArticulo = new System.Windows.Forms.Button();
             this.DgwListaArticulos = new System.Windows.Forms.DataGridView();
-            this.CmbCategorias = new System.Windows.Forms.ComboBox();
+            this.CbxCategorias = new System.Windows.Forms.ComboBox();
             this.LblBusqueda = new System.Windows.Forms.Label();
             this.TxtBuscar = new System.Windows.Forms.TextBox();
             this.LblCategorias = new System.Windows.Forms.Label();
+            this.Pbx1 = new System.Windows.Forms.PictureBox();
+            this.Pbx2 = new System.Windows.Forms.PictureBox();
+            this.Pbx3 = new System.Windows.Forms.PictureBox();
+            this.Lbl = new System.Windows.Forms.Label();
+            this.Cbx = new System.Windows.Forms.ComboBox();
+            this.Panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.DgwListaArticulos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pbx1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pbx2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pbx3)).BeginInit();
+            this.Panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // BtnAgregar
             // 
-            this.BtnAgregar.Location = new System.Drawing.Point(154, 112);
+            this.BtnAgregar.Location = new System.Drawing.Point(33, 26);
             this.BtnAgregar.Name = "BtnAgregar";
             this.BtnAgregar.Size = new System.Drawing.Size(75, 39);
             this.BtnAgregar.TabIndex = 0;
             this.BtnAgregar.Text = "Agregar";
             this.BtnAgregar.UseVisualStyleBackColor = true;
+            this.BtnAgregar.Click += new System.EventHandler(this.BtnAgregar_Click);
             // 
             // BtnEliminar
             // 
-            this.BtnEliminar.Location = new System.Drawing.Point(154, 226);
+            this.BtnEliminar.Location = new System.Drawing.Point(33, 99);
             this.BtnEliminar.Name = "BtnEliminar";
             this.BtnEliminar.Size = new System.Drawing.Size(80, 37);
             this.BtnEliminar.TabIndex = 1;
@@ -60,7 +71,7 @@
             // 
             // BtnModificar
             // 
-            this.BtnModificar.Location = new System.Drawing.Point(154, 324);
+            this.BtnModificar.Location = new System.Drawing.Point(33, 171);
             this.BtnModificar.Name = "BtnModificar";
             this.BtnModificar.Size = new System.Drawing.Size(80, 43);
             this.BtnModificar.TabIndex = 2;
@@ -69,7 +80,7 @@
             // 
             // BtnDetalleArticulo
             // 
-            this.BtnDetalleArticulo.Location = new System.Drawing.Point(154, 428);
+            this.BtnDetalleArticulo.Location = new System.Drawing.Point(33, 259);
             this.BtnDetalleArticulo.Name = "BtnDetalleArticulo";
             this.BtnDetalleArticulo.Size = new System.Drawing.Size(117, 23);
             this.BtnDetalleArticulo.TabIndex = 3;
@@ -79,29 +90,31 @@
             // DgwListaArticulos
             // 
             this.DgwListaArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DgwListaArticulos.Location = new System.Drawing.Point(349, 183);
+            this.DgwListaArticulos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.DgwListaArticulos.Location = new System.Drawing.Point(349, 99);
             this.DgwListaArticulos.Name = "DgwListaArticulos";
-            this.DgwListaArticulos.Size = new System.Drawing.Size(606, 268);
+            this.DgwListaArticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.DgwListaArticulos.Size = new System.Drawing.Size(758, 310);
             this.DgwListaArticulos.TabIndex = 4;
             // 
-            // CmbCategorias
+            // CbxCategorias
             // 
-            this.CmbCategorias.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.CmbCategorias.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.CmbCategorias.FormattingEnabled = true;
-            this.CmbCategorias.Items.AddRange(new object[] {
+            this.CbxCategorias.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.CbxCategorias.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.CbxCategorias.FormattingEnabled = true;
+            this.CbxCategorias.Items.AddRange(new object[] {
             "manzana",
             "maranja"});
-            this.CmbCategorias.Location = new System.Drawing.Point(834, 122);
-            this.CmbCategorias.Name = "CmbCategorias";
-            this.CmbCategorias.Size = new System.Drawing.Size(121, 21);
-            this.CmbCategorias.TabIndex = 5;
+            this.CbxCategorias.Location = new System.Drawing.Point(815, 59);
+            this.CbxCategorias.Name = "CbxCategorias";
+            this.CbxCategorias.Size = new System.Drawing.Size(121, 21);
+            this.CbxCategorias.TabIndex = 5;
             // 
             // LblBusqueda
             // 
             this.LblBusqueda.AutoSize = true;
             this.LblBusqueda.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.LblBusqueda.Location = new System.Drawing.Point(346, 79);
+            this.LblBusqueda.Location = new System.Drawing.Point(346, 26);
             this.LblBusqueda.Name = "LblBusqueda";
             this.LblBusqueda.Size = new System.Drawing.Size(81, 13);
             this.LblBusqueda.TabIndex = 6;
@@ -109,7 +122,7 @@
             // 
             // TxtBuscar
             // 
-            this.TxtBuscar.Location = new System.Drawing.Point(349, 122);
+            this.TxtBuscar.Location = new System.Drawing.Point(349, 60);
             this.TxtBuscar.Name = "TxtBuscar";
             this.TxtBuscar.Size = new System.Drawing.Size(409, 20);
             this.TxtBuscar.TabIndex = 7;
@@ -117,11 +130,68 @@
             // LblCategorias
             // 
             this.LblCategorias.AutoSize = true;
-            this.LblCategorias.Location = new System.Drawing.Point(834, 78);
+            this.LblCategorias.Location = new System.Drawing.Point(812, 26);
             this.LblCategorias.Name = "LblCategorias";
             this.LblCategorias.Size = new System.Drawing.Size(57, 13);
             this.LblCategorias.TabIndex = 8;
             this.LblCategorias.Text = "Categorias";
+            // 
+            // Pbx1
+            // 
+            this.Pbx1.Location = new System.Drawing.Point(349, 433);
+            this.Pbx1.Name = "Pbx1";
+            this.Pbx1.Size = new System.Drawing.Size(227, 190);
+            this.Pbx1.TabIndex = 9;
+            this.Pbx1.TabStop = false;
+            // 
+            // Pbx2
+            // 
+            this.Pbx2.Location = new System.Drawing.Point(614, 433);
+            this.Pbx2.Name = "Pbx2";
+            this.Pbx2.Size = new System.Drawing.Size(227, 190);
+            this.Pbx2.TabIndex = 10;
+            this.Pbx2.TabStop = false;
+            // 
+            // Pbx3
+            // 
+            this.Pbx3.Location = new System.Drawing.Point(880, 433);
+            this.Pbx3.Name = "Pbx3";
+            this.Pbx3.Size = new System.Drawing.Size(227, 190);
+            this.Pbx3.TabIndex = 11;
+            this.Pbx3.TabStop = false;
+            // 
+            // Lbl
+            // 
+            this.Lbl.AutoSize = true;
+            this.Lbl.Location = new System.Drawing.Point(987, 26);
+            this.Lbl.Name = "Lbl";
+            this.Lbl.Size = new System.Drawing.Size(53, 13);
+            this.Lbl.TabIndex = 12;
+            this.Lbl.Text = "Otra cosa";
+            // 
+            // Cbx
+            // 
+            this.Cbx.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.Cbx.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.Cbx.FormattingEnabled = true;
+            this.Cbx.Items.AddRange(new object[] {
+            "manzana",
+            "maranja"});
+            this.Cbx.Location = new System.Drawing.Point(986, 60);
+            this.Cbx.Name = "Cbx";
+            this.Cbx.Size = new System.Drawing.Size(121, 21);
+            this.Cbx.TabIndex = 13;
+            // 
+            // Panel1
+            // 
+            this.Panel1.Controls.Add(this.BtnDetalleArticulo);
+            this.Panel1.Controls.Add(this.BtnModificar);
+            this.Panel1.Controls.Add(this.BtnEliminar);
+            this.Panel1.Controls.Add(this.BtnAgregar);
+            this.Panel1.Location = new System.Drawing.Point(0, 0);
+            this.Panel1.Name = "Panel1";
+            this.Panel1.Size = new System.Drawing.Size(272, 639);
+            this.Panel1.TabIndex = 14;
             // 
             // Ventana
             // 
@@ -129,19 +199,25 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkSlateGray;
             this.ClientSize = new System.Drawing.Size(1152, 635);
+            this.Controls.Add(this.Panel1);
+            this.Controls.Add(this.Cbx);
+            this.Controls.Add(this.Lbl);
+            this.Controls.Add(this.Pbx3);
+            this.Controls.Add(this.Pbx2);
+            this.Controls.Add(this.Pbx1);
             this.Controls.Add(this.LblCategorias);
             this.Controls.Add(this.TxtBuscar);
             this.Controls.Add(this.LblBusqueda);
-            this.Controls.Add(this.CmbCategorias);
+            this.Controls.Add(this.CbxCategorias);
             this.Controls.Add(this.DgwListaArticulos);
-            this.Controls.Add(this.BtnDetalleArticulo);
-            this.Controls.Add(this.BtnModificar);
-            this.Controls.Add(this.BtnEliminar);
-            this.Controls.Add(this.BtnAgregar);
             this.Name = "Ventana";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "Aplicacion";
             ((System.ComponentModel.ISupportInitialize)(this.DgwListaArticulos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pbx1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pbx2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pbx3)).EndInit();
+            this.Panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -154,10 +230,16 @@
         private System.Windows.Forms.Button BtnModificar;
         private System.Windows.Forms.Button BtnDetalleArticulo;
         private System.Windows.Forms.DataGridView DgwListaArticulos;
-        private System.Windows.Forms.ComboBox CmbCategorias;
+        private System.Windows.Forms.ComboBox CbxCategorias;
         private System.Windows.Forms.Label LblBusqueda;
         private System.Windows.Forms.TextBox TxtBuscar;
         private System.Windows.Forms.Label LblCategorias;
+        private System.Windows.Forms.PictureBox Pbx1;
+        private System.Windows.Forms.PictureBox Pbx2;
+        private System.Windows.Forms.PictureBox Pbx3;
+        private System.Windows.Forms.Label Lbl;
+        private System.Windows.Forms.ComboBox Cbx;
+        private System.Windows.Forms.Panel Panel1;
     }
 }
 

@@ -10,19 +10,12 @@ using System.Windows.Forms;
 
 namespace TPWinForm_equipo_18
 {
-    public partial class Ventana : Form
+    public partial class Form2 : Form
     {
-        public Ventana()
+        public Form2()
         {
             InitializeComponent();
         }
 
-        private void BtnAgregar_Click(object sender, EventArgs e)
-        {
-            Form2 venatana_agregar = new Form2();
-            venatana_agregar.ShowDialog();
-        }
-
-     
     }
 }
