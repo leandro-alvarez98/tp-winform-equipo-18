@@ -17,5 +17,9 @@ namespace TPWinForm_equipo_18
             InitializeComponent();
         }
 
+        private void BtnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

@@ -19,10 +19,12 @@ namespace TPWinForm_equipo_18
 
         private void BtnAgregar_Click(object sender, EventArgs e)
         {
+            
             Form2 venatana_agregar = new Form2();
-            venatana_agregar.ShowDialog();
+            venatana_agregar.Show();
+            
         }
 
-     
+       
     }
 }
