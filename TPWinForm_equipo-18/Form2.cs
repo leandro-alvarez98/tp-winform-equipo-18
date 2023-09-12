@@ -14,6 +14,9 @@ namespace TPWinForm_equipo_18
 {
     public partial class VentanaAñadirArticulo : Form
     {
+        private Articulo articulo = null;
+        private OpenFileDialog archivo = null;
+
         public VentanaAñadirArticulo()
         {
             InitializeComponent();
@@ -26,16 +29,21 @@ namespace TPWinForm_equipo_18
 
         private void BtnAgregar_Click(object sender, EventArgs e)
         {
-            Articulo nuevo_articulo = new Articulo();
             ArticuloNegocio negocio = new ArticuloNegocio();
+
             try
             {
-                nuevo_articulo.ID = int.Parse(TxtCodigo.Text);
-                nuevo_articulo.nombre = TxtNombre.Text;
-                nuevo_articulo.descripcion = TxtDescripcion.Text;
-                nuevo_articulo.precio = int.Parse(TxtPrecio.Text);
+                if(articulo == null)
+                    articulo = new Articulo();
 
-                negocio.agregar(nuevo_articulo);
+                articulo.codigo = TxtCodigo.Text;
+                articulo.nombre = TxtNombre.Text;
+                articulo.descripcion = TxtDescripcion.Text;
+                articulo.Categoria = (Categoria)CbxCategoria.SelectedItem;
+                articulo.Marca = (Marca)CbxMarca.SelectedItem;
+                articulo.precio = decimal.Parse(TxtPrecio.Text);
+
+                negocio.agregar(articulo);
                 MessageBox.Show("Articulo añadido correctamente!");
                 Close();
             }

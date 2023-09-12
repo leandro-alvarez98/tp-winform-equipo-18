@@ -37,7 +37,7 @@
             this.TxtBuscar = new System.Windows.Forms.TextBox();
             this.LblCategorias = new System.Windows.Forms.Label();
             this.LblMarca = new System.Windows.Forms.Label();
-            this.Cbx = new System.Windows.Forms.ComboBox();
+            this.CbxMarcas = new System.Windows.Forms.ComboBox();
             this.ImgLmagenes = new System.Windows.Forms.ImageList(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.Header = new System.Windows.Forms.Panel();
@@ -48,6 +48,7 @@
             this.BtnModificar = new System.Windows.Forms.Button();
             this.BtnEliminar = new System.Windows.Forms.Button();
             this.sideBarTransition = new System.Windows.Forms.Timer(this.components);
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.DgwListaArticulos)).BeginInit();
             this.Header.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnHam)).BeginInit();
@@ -56,7 +57,7 @@
             // 
             // BtnCambiarImagen
             // 
-            this.BtnCambiarImagen.Location = new System.Drawing.Point(998, 564);
+            this.BtnCambiarImagen.Location = new System.Drawing.Point(1022, 532);
             this.BtnCambiarImagen.Name = "BtnCambiarImagen";
             this.BtnCambiarImagen.Size = new System.Drawing.Size(111, 25);
             this.BtnCambiarImagen.TabIndex = 3;
@@ -67,10 +68,10 @@
             // 
             this.DgwListaArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgwListaArticulos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.DgwListaArticulos.Location = new System.Drawing.Point(202, 211);
+            this.DgwListaArticulos.Location = new System.Drawing.Point(202, 153);
             this.DgwListaArticulos.Name = "DgwListaArticulos";
             this.DgwListaArticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DgwListaArticulos.Size = new System.Drawing.Size(861, 294);
+            this.DgwListaArticulos.Size = new System.Drawing.Size(931, 352);
             this.DgwListaArticulos.TabIndex = 4;
             // 
             // CbxCategorias
@@ -81,7 +82,7 @@
             this.CbxCategorias.Items.AddRange(new object[] {
             "manzana",
             "maranja"});
-            this.CbxCategorias.Location = new System.Drawing.Point(653, 95);
+            this.CbxCategorias.Location = new System.Drawing.Point(794, 95);
             this.CbxCategorias.Name = "CbxCategorias";
             this.CbxCategorias.Size = new System.Drawing.Size(121, 21);
             this.CbxCategorias.TabIndex = 5;
@@ -89,10 +90,12 @@
             // LblBusqueda
             // 
             this.LblBusqueda.AutoSize = true;
+            this.LblBusqueda.BackColor = System.Drawing.Color.Transparent;
+            this.LblBusqueda.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
             this.LblBusqueda.ForeColor = System.Drawing.SystemColors.ControlText;
             this.LblBusqueda.Location = new System.Drawing.Point(192, 69);
             this.LblBusqueda.Name = "LblBusqueda";
-            this.LblBusqueda.Size = new System.Drawing.Size(82, 13);
+            this.LblBusqueda.Size = new System.Drawing.Size(132, 20);
             this.LblBusqueda.TabIndex = 6;
             this.LblBusqueda.Text = "Buscar articulos";
             // 
@@ -106,33 +109,35 @@
             // LblCategorias
             // 
             this.LblCategorias.AutoSize = true;
-            this.LblCategorias.Location = new System.Drawing.Point(650, 69);
+            this.LblCategorias.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.LblCategorias.Location = new System.Drawing.Point(698, 96);
             this.LblCategorias.Name = "LblCategorias";
-            this.LblCategorias.Size = new System.Drawing.Size(57, 13);
+            this.LblCategorias.Size = new System.Drawing.Size(90, 20);
             this.LblCategorias.TabIndex = 8;
             this.LblCategorias.Text = "Categorias";
             // 
             // LblMarca
             // 
             this.LblMarca.AutoSize = true;
-            this.LblMarca.Location = new System.Drawing.Point(861, 69);
+            this.LblMarca.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.LblMarca.Location = new System.Drawing.Point(698, 124);
             this.LblMarca.Name = "LblMarca";
-            this.LblMarca.Size = new System.Drawing.Size(37, 13);
+            this.LblMarca.Size = new System.Drawing.Size(56, 20);
             this.LblMarca.TabIndex = 10;
             this.LblMarca.Text = "Marca";
             // 
-            // Cbx
+            // CbxMarcas
             // 
-            this.Cbx.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.Cbx.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.Cbx.FormattingEnabled = true;
-            this.Cbx.Items.AddRange(new object[] {
+            this.CbxMarcas.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.CbxMarcas.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.CbxMarcas.FormattingEnabled = true;
+            this.CbxMarcas.Items.AddRange(new object[] {
             "manzana",
             "maranja"});
-            this.Cbx.Location = new System.Drawing.Point(864, 96);
-            this.Cbx.Name = "Cbx";
-            this.Cbx.Size = new System.Drawing.Size(121, 21);
-            this.Cbx.TabIndex = 13;
+            this.CbxMarcas.Location = new System.Drawing.Point(773, 126);
+            this.CbxMarcas.Name = "CbxMarcas";
+            this.CbxMarcas.Size = new System.Drawing.Size(121, 21);
+            this.CbxMarcas.TabIndex = 13;
             // 
             // ImgLmagenes
             // 
@@ -144,7 +149,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(199, 508);
+            this.label1.Location = new System.Drawing.Point(199, 538);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(695, 13);
             this.label1.TabIndex = 15;
@@ -189,8 +194,9 @@
             // BtnAgregar
             // 
             this.BtnAgregar.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.BtnAgregar.BackColor = System.Drawing.Color.FloralWhite;
+            this.BtnAgregar.BackColor = System.Drawing.Color.Transparent;
             this.BtnAgregar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.BtnAgregar.ForeColor = System.Drawing.Color.Black;
             this.BtnAgregar.Image = ((System.Drawing.Image)(resources.GetObject("BtnAgregar.Image")));
             this.BtnAgregar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -220,8 +226,9 @@
             // BtnModificar
             // 
             this.BtnModificar.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.BtnModificar.BackColor = System.Drawing.Color.FloralWhite;
+            this.BtnModificar.BackColor = System.Drawing.Color.Transparent;
             this.BtnModificar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnModificar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.BtnModificar.ForeColor = System.Drawing.Color.Black;
             this.BtnModificar.Image = ((System.Drawing.Image)(resources.GetObject("BtnModificar.Image")));
             this.BtnModificar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -237,8 +244,9 @@
             // BtnEliminar
             // 
             this.BtnEliminar.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.BtnEliminar.BackColor = System.Drawing.Color.FloralWhite;
+            this.BtnEliminar.BackColor = System.Drawing.Color.Transparent;
             this.BtnEliminar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.BtnEliminar.ForeColor = System.Drawing.Color.Black;
             this.BtnEliminar.Image = ((System.Drawing.Image)(resources.GetObject("BtnEliminar.Image")));
             this.BtnEliminar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -256,16 +264,29 @@
             this.sideBarTransition.Interval = 10;
             this.sideBarTransition.Tick += new System.EventHandler(this.sideBarTransition_Tick);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.label2.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label2.Location = new System.Drawing.Point(667, 69);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(87, 20);
+            this.label2.TabIndex = 19;
+            this.label2.Text = "Filtrar por:";
+            // 
             // Ventana
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.MintCream;
             this.ClientSize = new System.Drawing.Size(1145, 619);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.sideBar);
             this.Controls.Add(this.Header);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.BtnCambiarImagen);
-            this.Controls.Add(this.Cbx);
+            this.Controls.Add(this.CbxMarcas);
             this.Controls.Add(this.LblMarca);
             this.Controls.Add(this.LblCategorias);
             this.Controls.Add(this.TxtBuscar);
@@ -296,7 +317,7 @@
         private System.Windows.Forms.TextBox TxtBuscar;
         private System.Windows.Forms.Label LblCategorias;
         private System.Windows.Forms.Label LblMarca;
-        private System.Windows.Forms.ComboBox Cbx;
+        private System.Windows.Forms.ComboBox CbxMarcas;
         private System.Windows.Forms.ImageList ImgLmagenes;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel Header;
@@ -307,6 +328,7 @@
         private System.Windows.Forms.Button BtnModificar;
         private System.Windows.Forms.Button BtnEliminar;
         private System.Windows.Forms.Timer sideBarTransition;
+        private System.Windows.Forms.Label label2;
     }
 }
 

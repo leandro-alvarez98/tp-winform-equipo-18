@@ -9,12 +9,12 @@ namespace dominio
     public class Articulo
     {
         public int ID {  get; set; }
-        public int codigo { get; set; }
+        public String codigo { get; set; }
         public String nombre { get; set; }
         public String descripcion { get; set; }
-        public String marca { get; set; }
-        public String categoria { get; set; }
-        public int precio { get; set; }
+        public Marca Marca { get; set; }
+        public Categoria Categoria { get; set; }
+        public decimal precio { get; set; }
         public string urlImagen { get; set; }
     }
 }

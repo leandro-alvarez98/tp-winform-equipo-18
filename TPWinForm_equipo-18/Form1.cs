@@ -34,10 +34,6 @@ namespace TPWinForm_equipo_18
             DgwListaArticulos.DataSource = Articulo_actual.listar();
             /*En data source se guarda una lista*/
 
-            DgwListaArticulos.Columns["codigo"].Visible = false;
-            DgwListaArticulos.Columns["precio"].Visible = false;
-            DgwListaArticulos.Columns["marca"].Visible = false;
-            DgwListaArticulos.Columns["categoria"].Visible = false;
             DgwListaArticulos.Columns["urlimagen"].Visible = false;
         }
 
