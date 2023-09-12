@@ -49,6 +49,7 @@
             this.BtnEliminar = new System.Windows.Forms.Button();
             this.sideBarTransition = new System.Windows.Forms.Timer(this.components);
             this.label2 = new System.Windows.Forms.Label();
+            this.btnBuscar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DgwListaArticulos)).BeginInit();
             this.Header.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnHam)).BeginInit();
@@ -99,9 +100,9 @@
             // 
             // TxtBuscar
             // 
-            this.TxtBuscar.Location = new System.Drawing.Point(192, 96);
+            this.TxtBuscar.Location = new System.Drawing.Point(202, 98);
             this.TxtBuscar.Name = "TxtBuscar";
-            this.TxtBuscar.Size = new System.Drawing.Size(409, 20);
+            this.TxtBuscar.Size = new System.Drawing.Size(259, 20);
             this.TxtBuscar.TabIndex = 7;
             // 
             // LblCategorias
@@ -254,6 +255,7 @@
             this.BtnEliminar.Text = "                   Eliminar";
             this.BtnEliminar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BtnEliminar.UseVisualStyleBackColor = false;
+            this.BtnEliminar.Click += new System.EventHandler(this.BtnEliminar_Click);
             // 
             // sideBarTransition
             // 
@@ -272,11 +274,22 @@
             this.label2.TabIndex = 19;
             this.label2.Text = "Filtrar por:";
             // 
+            // btnBuscar
+            // 
+            this.btnBuscar.Location = new System.Drawing.Point(202, 123);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(75, 23);
+            this.btnBuscar.TabIndex = 21;
+            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            // 
             // Ventana
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.MintCream;
             this.ClientSize = new System.Drawing.Size(1145, 619);
+            this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.sideBar);
             this.Controls.Add(this.Header);
@@ -325,6 +338,7 @@
         private System.Windows.Forms.Button BtnEliminar;
         private System.Windows.Forms.Timer sideBarTransition;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnBuscar;
     }
 }
 
