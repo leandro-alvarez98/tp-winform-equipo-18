@@ -14,7 +14,7 @@ namespace dominio
         public String descripcion { get; set; }
         public String marca { get; set; }
         public String categoria { get; set; }
-        public double precio { get; set; }
+        public int precio { get; set; }
         public string urlImagen { get; set; }
     }
 }

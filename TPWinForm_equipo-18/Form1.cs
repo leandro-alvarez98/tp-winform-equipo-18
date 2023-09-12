@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using negocio;
+using System.Security.Cryptography;
 
 namespace TPWinForm_equipo_18
 {
@@ -22,8 +23,8 @@ namespace TPWinForm_equipo_18
         private void BtnAgregar_Click(object sender, EventArgs e)
         {
             
-            Form2 venatana_agregar = new Form2();
-            venatana_agregar.Show();
+            VentanaAñadirArticulo venatana_agregar = new VentanaAñadirArticulo();
+            venatana_agregar.ShowDialog();
             
         }
 
@@ -51,8 +52,8 @@ namespace TPWinForm_equipo_18
         {
             if (sideBarExpand)
             {
-                sideBar.Width -= 10;
-                if (sideBar.Width <= 52)
+                sideBar.Width -= 5;
+                if (sideBar.Width <= 48)
                 {
                     sideBarExpand = false;
                     sideBarTransition.Stop();
@@ -60,7 +61,7 @@ namespace TPWinForm_equipo_18
             }
             else
             {
-                sideBar.Width += 10;
+                sideBar.Width += 5;
                 if (sideBar.Width >= 186)
                 {
                     sideBarExpand = true;

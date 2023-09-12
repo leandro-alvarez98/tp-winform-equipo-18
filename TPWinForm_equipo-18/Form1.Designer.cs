@@ -178,6 +178,7 @@
             this.btnHam.BackColor = System.Drawing.Color.Transparent;
             this.btnHam.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnHam.BackgroundImage")));
             this.btnHam.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnHam.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnHam.Location = new System.Drawing.Point(12, 20);
             this.btnHam.Name = "btnHam";
             this.btnHam.Size = new System.Drawing.Size(40, 40);
@@ -196,7 +197,7 @@
             this.BtnAgregar.Location = new System.Drawing.Point(0, 25);
             this.BtnAgregar.Margin = new System.Windows.Forms.Padding(0);
             this.BtnAgregar.Name = "BtnAgregar";
-            this.BtnAgregar.Size = new System.Drawing.Size(186, 53);
+            this.BtnAgregar.Size = new System.Drawing.Size(186, 50);
             this.BtnAgregar.TabIndex = 0;
             this.BtnAgregar.Text = "                   Agregar";
             this.BtnAgregar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -224,10 +225,10 @@
             this.BtnModificar.ForeColor = System.Drawing.Color.Black;
             this.BtnModificar.Image = ((System.Drawing.Image)(resources.GetObject("BtnModificar.Image")));
             this.BtnModificar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnModificar.Location = new System.Drawing.Point(0, 78);
+            this.BtnModificar.Location = new System.Drawing.Point(0, 75);
             this.BtnModificar.Margin = new System.Windows.Forms.Padding(0);
             this.BtnModificar.Name = "BtnModificar";
-            this.BtnModificar.Size = new System.Drawing.Size(186, 53);
+            this.BtnModificar.Size = new System.Drawing.Size(186, 50);
             this.BtnModificar.TabIndex = 19;
             this.BtnModificar.Text = "                   Modificar";
             this.BtnModificar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -241,10 +242,10 @@
             this.BtnEliminar.ForeColor = System.Drawing.Color.Black;
             this.BtnEliminar.Image = ((System.Drawing.Image)(resources.GetObject("BtnEliminar.Image")));
             this.BtnEliminar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnEliminar.Location = new System.Drawing.Point(0, 131);
+            this.BtnEliminar.Location = new System.Drawing.Point(0, 125);
             this.BtnEliminar.Margin = new System.Windows.Forms.Padding(0);
             this.BtnEliminar.Name = "BtnEliminar";
-            this.BtnEliminar.Size = new System.Drawing.Size(186, 53);
+            this.BtnEliminar.Size = new System.Drawing.Size(186, 50);
             this.BtnEliminar.TabIndex = 18;
             this.BtnEliminar.Text = "                   Eliminar";
             this.BtnEliminar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -257,8 +258,7 @@
             // 
             // Ventana
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.MintCream;
             this.ClientSize = new System.Drawing.Size(1145, 619);
             this.Controls.Add(this.sideBar);
@@ -272,6 +272,7 @@
             this.Controls.Add(this.LblBusqueda);
             this.Controls.Add(this.CbxCategorias);
             this.Controls.Add(this.DgwListaArticulos);
+            this.IsMdiContainer = true;
             this.MaximumSize = new System.Drawing.Size(1161, 658);
             this.Name = "Ventana";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

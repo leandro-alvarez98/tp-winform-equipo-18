@@ -1,6 +1,6 @@
 ﻿namespace TPWinForm_equipo_18
 {
-    partial class Form2
+    partial class VentanaAñadirArticulo
     {
         /// <summary>
         /// Required designer variable.
@@ -49,7 +49,7 @@
             // LblCodigo
             // 
             this.LblCodigo.AutoSize = true;
-            this.LblCodigo.Location = new System.Drawing.Point(160, 58);
+            this.LblCodigo.Location = new System.Drawing.Point(22, 27);
             this.LblCodigo.Name = "LblCodigo";
             this.LblCodigo.Size = new System.Drawing.Size(78, 13);
             this.LblCodigo.TabIndex = 0;
@@ -58,7 +58,7 @@
             // LblNombre
             // 
             this.LblNombre.AutoSize = true;
-            this.LblNombre.Location = new System.Drawing.Point(160, 120);
+            this.LblNombre.Location = new System.Drawing.Point(22, 89);
             this.LblNombre.Name = "LblNombre";
             this.LblNombre.Size = new System.Drawing.Size(44, 13);
             this.LblNombre.TabIndex = 1;
@@ -67,7 +67,7 @@
             // LblDescripcion
             // 
             this.LblDescripcion.AutoSize = true;
-            this.LblDescripcion.Location = new System.Drawing.Point(160, 344);
+            this.LblDescripcion.Location = new System.Drawing.Point(22, 315);
             this.LblDescripcion.Name = "LblDescripcion";
             this.LblDescripcion.Size = new System.Drawing.Size(63, 13);
             this.LblDescripcion.TabIndex = 2;
@@ -76,7 +76,7 @@
             // LblMarca
             // 
             this.LblMarca.AutoSize = true;
-            this.LblMarca.Location = new System.Drawing.Point(160, 175);
+            this.LblMarca.Location = new System.Drawing.Point(22, 144);
             this.LblMarca.Name = "LblMarca";
             this.LblMarca.Size = new System.Drawing.Size(37, 13);
             this.LblMarca.TabIndex = 3;
@@ -85,7 +85,7 @@
             // LblCategoria
             // 
             this.LblCategoria.AutoSize = true;
-            this.LblCategoria.Location = new System.Drawing.Point(160, 236);
+            this.LblCategoria.Location = new System.Drawing.Point(22, 205);
             this.LblCategoria.Name = "LblCategoria";
             this.LblCategoria.Size = new System.Drawing.Size(52, 13);
             this.LblCategoria.TabIndex = 4;
@@ -94,7 +94,7 @@
             // LblPrecio
             // 
             this.LblPrecio.AutoSize = true;
-            this.LblPrecio.Location = new System.Drawing.Point(160, 293);
+            this.LblPrecio.Location = new System.Drawing.Point(22, 265);
             this.LblPrecio.Name = "LblPrecio";
             this.LblPrecio.Size = new System.Drawing.Size(37, 13);
             this.LblPrecio.TabIndex = 5;
@@ -102,14 +102,14 @@
             // 
             // TxtCodigo
             // 
-            this.TxtCodigo.Location = new System.Drawing.Point(326, 55);
+            this.TxtCodigo.Location = new System.Drawing.Point(106, 24);
             this.TxtCodigo.Name = "TxtCodigo";
             this.TxtCodigo.Size = new System.Drawing.Size(197, 20);
             this.TxtCodigo.TabIndex = 6;
             // 
             // TxtDescripcion
             // 
-            this.TxtDescripcion.Location = new System.Drawing.Point(163, 379);
+            this.TxtDescripcion.Location = new System.Drawing.Point(25, 343);
             this.TxtDescripcion.Multiline = true;
             this.TxtDescripcion.Name = "TxtDescripcion";
             this.TxtDescripcion.Size = new System.Drawing.Size(360, 130);
@@ -117,7 +117,7 @@
             // 
             // TxtNombre
             // 
-            this.TxtNombre.Location = new System.Drawing.Point(326, 117);
+            this.TxtNombre.Location = new System.Drawing.Point(106, 86);
             this.TxtNombre.Name = "TxtNombre";
             this.TxtNombre.Size = new System.Drawing.Size(197, 20);
             this.TxtNombre.TabIndex = 8;
@@ -126,17 +126,18 @@
             // 
             this.BtnAgregar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.BtnAgregar.ForeColor = System.Drawing.Color.Black;
-            this.BtnAgregar.Location = new System.Drawing.Point(595, 474);
+            this.BtnAgregar.Location = new System.Drawing.Point(47, 509);
             this.BtnAgregar.Name = "BtnAgregar";
             this.BtnAgregar.Size = new System.Drawing.Size(98, 35);
             this.BtnAgregar.TabIndex = 9;
             this.BtnAgregar.Text = "Agregar";
             this.BtnAgregar.UseVisualStyleBackColor = false;
+            this.BtnAgregar.Click += new System.EventHandler(this.BtnAgregar_Click);
             // 
             // BtnCancelar
             // 
             this.BtnCancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.BtnCancelar.Location = new System.Drawing.Point(780, 474);
+            this.BtnCancelar.Location = new System.Drawing.Point(232, 509);
             this.BtnCancelar.Name = "BtnCancelar";
             this.BtnCancelar.Size = new System.Drawing.Size(98, 35);
             this.BtnCancelar.TabIndex = 10;
@@ -147,7 +148,7 @@
             // CbxMarca
             // 
             this.CbxMarca.FormattingEnabled = true;
-            this.CbxMarca.Location = new System.Drawing.Point(326, 172);
+            this.CbxMarca.Location = new System.Drawing.Point(106, 141);
             this.CbxMarca.Name = "CbxMarca";
             this.CbxMarca.Size = new System.Drawing.Size(197, 21);
             this.CbxMarca.TabIndex = 11;
@@ -155,32 +156,32 @@
             // CbxCategoria
             // 
             this.CbxCategoria.FormattingEnabled = true;
-            this.CbxCategoria.Location = new System.Drawing.Point(326, 233);
+            this.CbxCategoria.Location = new System.Drawing.Point(106, 202);
             this.CbxCategoria.Name = "CbxCategoria";
             this.CbxCategoria.Size = new System.Drawing.Size(197, 21);
             this.CbxCategoria.TabIndex = 12;
             // 
             // PbxImagen
             // 
-            this.PbxImagen.Location = new System.Drawing.Point(595, 55);
+            this.PbxImagen.Location = new System.Drawing.Point(323, 24);
             this.PbxImagen.Name = "PbxImagen";
-            this.PbxImagen.Size = new System.Drawing.Size(283, 251);
+            this.PbxImagen.Size = new System.Drawing.Size(288, 304);
             this.PbxImagen.TabIndex = 13;
             this.PbxImagen.TabStop = false;
             // 
             // TxtPrecio
             // 
-            this.TxtPrecio.Location = new System.Drawing.Point(326, 293);
+            this.TxtPrecio.Location = new System.Drawing.Point(106, 262);
             this.TxtPrecio.Name = "TxtPrecio";
             this.TxtPrecio.Size = new System.Drawing.Size(197, 20);
             this.TxtPrecio.TabIndex = 14;
             // 
-            // Form2
+            // VentanaAñadirArticulo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Teal;
-            this.ClientSize = new System.Drawing.Size(1023, 569);
+            this.ClientSize = new System.Drawing.Size(654, 601);
             this.Controls.Add(this.TxtPrecio);
             this.Controls.Add(this.PbxImagen);
             this.Controls.Add(this.CbxCategoria);
@@ -196,7 +197,8 @@
             this.Controls.Add(this.LblDescripcion);
             this.Controls.Add(this.LblNombre);
             this.Controls.Add(this.LblCodigo);
-            this.Name = "Form2";
+            this.MinimumSize = new System.Drawing.Size(670, 640);
+            this.Name = "VentanaAñadirArticulo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cargar Articulos";
             ((System.ComponentModel.ISupportInitialize)(this.PbxImagen)).EndInit();
