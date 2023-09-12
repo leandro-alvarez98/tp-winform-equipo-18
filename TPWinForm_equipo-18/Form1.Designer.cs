@@ -69,6 +69,7 @@
             this.DgwListaArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgwListaArticulos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.DgwListaArticulos.Location = new System.Drawing.Point(202, 153);
+            this.DgwListaArticulos.MultiSelect = false;
             this.DgwListaArticulos.Name = "DgwListaArticulos";
             this.DgwListaArticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DgwListaArticulos.Size = new System.Drawing.Size(931, 352);
@@ -79,9 +80,6 @@
             this.CbxCategorias.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.CbxCategorias.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.CbxCategorias.FormattingEnabled = true;
-            this.CbxCategorias.Items.AddRange(new object[] {
-            "manzana",
-            "maranja"});
             this.CbxCategorias.Location = new System.Drawing.Point(794, 95);
             this.CbxCategorias.Name = "CbxCategorias";
             this.CbxCategorias.Size = new System.Drawing.Size(121, 21);
@@ -131,10 +129,7 @@
             this.CbxMarcas.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.CbxMarcas.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.CbxMarcas.FormattingEnabled = true;
-            this.CbxMarcas.Items.AddRange(new object[] {
-            "manzana",
-            "maranja"});
-            this.CbxMarcas.Location = new System.Drawing.Point(773, 126);
+            this.CbxMarcas.Location = new System.Drawing.Point(794, 126);
             this.CbxMarcas.Name = "CbxMarcas";
             this.CbxMarcas.Size = new System.Drawing.Size(121, 21);
             this.CbxMarcas.TabIndex = 13;
@@ -240,6 +235,7 @@
             this.BtnModificar.Text = "                   Modificar";
             this.BtnModificar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BtnModificar.UseVisualStyleBackColor = false;
+            this.BtnModificar.Click += new System.EventHandler(this.BtnModificar_Click);
             // 
             // BtnEliminar
             // 

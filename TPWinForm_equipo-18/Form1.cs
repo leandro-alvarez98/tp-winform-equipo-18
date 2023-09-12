@@ -25,16 +25,57 @@ namespace TPWinForm_equipo_18
             
             VentanaAñadirArticulo venatana_agregar = new VentanaAñadirArticulo();
             venatana_agregar.ShowDialog();
+            Cargar_componentes();
             
+        }
+
+        private void Cargar_componentes()
+        {
+          
+              ArticuloNegocio Articulo_actual = new ArticuloNegocio();
+              CategoriaNegocio Categoria_desplegable = new CategoriaNegocio();
+              MarcaNegocio Marca_desplegable = new MarcaNegocio();
+
+               try
+               {
+                   //carga las listas desplegables y la datagriv
+                   CbxCategorias.DataSource = Categoria_desplegable.listar();
+                   CbxMarcas.DataSource = Marca_desplegable.listar();
+                   DgwListaArticulos.DataSource = Articulo_actual.listar();
+
+                   DgwListaArticulos.Columns["urlimagen"].Visible = false;
+               }
+               catch (Exception ex)
+               {
+                   MessageBox.Show(ex.ToString());
+                   throw;
+               }
+               /*En data source se guarda una lista*/
+ 
         }
 
         private void Ventana_Load(object sender, EventArgs e)
         {
             ArticuloNegocio Articulo_actual = new ArticuloNegocio();
-            DgwListaArticulos.DataSource = Articulo_actual.listar();
+            CategoriaNegocio Categoria_desplegable = new CategoriaNegocio();
+            MarcaNegocio Marca_desplegable = new MarcaNegocio();
+
+            try
+            {
+                //carga las listas desplegables y la datagriv
+                CbxCategorias.DataSource = Categoria_desplegable.listar();
+                CbxMarcas.DataSource = Marca_desplegable.listar();
+                DgwListaArticulos.DataSource = Articulo_actual.listar();
+
+                DgwListaArticulos.Columns["urlimagen"].Visible = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                throw;
+            }
             /*En data source se guarda una lista*/
 
-            DgwListaArticulos.Columns["urlimagen"].Visible = false;
         }
 
 
@@ -64,6 +105,16 @@ namespace TPWinForm_equipo_18
                     sideBarTransition.Stop();
                 }
             }
+        }
+
+        private void BtnModificar_Click(object sender, EventArgs e)
+        {
+            Articulo articulo_seleccionado;
+            articulo_seleccionado = (Articulo)DgwListaArticulos.CurrentRow.DataBoundItem;
+
+            VentanaAñadirArticulo modificar = new VentanaAñadirArticulo(articulo_seleccionado);
+            modificar.ShowDialog();
+            Cargar_componentes();
         }
     }
 }

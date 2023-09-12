@@ -22,6 +22,13 @@ namespace TPWinForm_equipo_18
             InitializeComponent();
         }
 
+        public VentanaAñadirArticulo (Articulo articulo)
+        {
+            InitializeComponent();
+            this.articulo = articulo;
+            Text = "Modificar Articulo";
+        }
+
         private void BtnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -36,15 +43,23 @@ namespace TPWinForm_equipo_18
                 if(articulo == null)
                     articulo = new Articulo();
 
-                articulo.codigo = TxtCodigo.Text;
-                articulo.nombre = TxtNombre.Text;
-                articulo.descripcion = TxtDescripcion.Text;
+                articulo.Codigo = TxtCodigo.Text;
+                articulo.Nombre = TxtNombre.Text;
+                articulo.Descripcion = TxtDescripcion.Text;
                 articulo.Categoria = (Categoria)CbxCategoria.SelectedItem;
                 articulo.Marca = (Marca)CbxMarca.SelectedItem;
-                articulo.precio = decimal.Parse(TxtPrecio.Text);
+                articulo.Precio = decimal.Parse(TxtPrecio.Text);
 
-                negocio.agregar(articulo);
-                MessageBox.Show("Articulo añadido correctamente!");
+                if (articulo.ID != 0)
+                {
+                    negocio.Modificar(articulo);
+                    MessageBox.Show("Modificado correctamente");
+                }else
+                {
+                    negocio.agregar(articulo);
+                    MessageBox.Show("Articulo añadido correctamente!");
+                }
+
                 Close();
             }
             catch (Exception ex)
@@ -61,7 +76,21 @@ namespace TPWinForm_equipo_18
             try
             {
                 CbxMarca.DataSource = marcaNegocio.listar();
+                CbxMarca.ValueMember = "Id";
+                CbxMarca.DisplayMember = "Descripcion";
                 CbxCategoria.DataSource = categoriaNegocio.listar();
+                CbxCategoria.ValueMember = "Id";
+                CbxCategoria.DisplayMember = "Descripcion";
+
+                if(articulo != null)
+                {
+                    TxtCodigo.Text = articulo.Codigo;  
+                    TxtNombre.Text = articulo.Nombre;
+                    TxtPrecio.Text = articulo.Precio.ToString();
+                    CbxMarca.SelectedValue = articulo.Marca.Id;
+                    CbxCategoria.SelectedValue = articulo.Categoria.Id;
+                    
+                }
             }
             catch (Exception ex)
             {

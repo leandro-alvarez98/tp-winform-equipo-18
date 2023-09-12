@@ -26,19 +26,21 @@ namespace negocio
                     Articulo objetoArticulo = new Articulo();
 
                     objetoArticulo.ID = (int)datos.Lector["Id"];
-                    objetoArticulo.codigo = (string)datos.Lector["Codigo"];
-                    objetoArticulo.nombre = (string)datos.Lector["Nombre"];
-                    objetoArticulo.descripcion = (string)datos.Lector["Descripcion"];
+                    objetoArticulo.Codigo = (string)datos.Lector["Codigo"];
+                    objetoArticulo.Nombre = (string)datos.Lector["Nombre"];
+                    objetoArticulo.Descripcion = (string)datos.Lector["Descripcion"];
 
                     objetoArticulo.Marca = new Marca();
+
                     objetoArticulo.Marca.Id = (int)datos.Lector["marca"];
                     objetoArticulo.Marca.Descripcion = (string)datos.Lector["mdescripcion"];
 
                     objetoArticulo.Categoria = new Categoria();
+
                     objetoArticulo.Categoria.Id = (int)datos.Lector["categoria"];
                     objetoArticulo.Categoria.Descripcion = (string)datos.Lector["cdescripcion"];
 
-                    objetoArticulo.precio = (decimal)datos.Lector["Precio"];
+                    objetoArticulo.Precio = (decimal)datos.Lector["Precio"];
 
                     //IMAGENES
                     //objetoArticulo.urlImagen = (string)datos.Lector["ImagenUrl"];
@@ -66,12 +68,12 @@ namespace negocio
             try
             {
                 datos.setConsulta("INSERT INTO ARTICULOS (Codigo, Nombre, IdMarca, IdCategoria, Precio, Descripcion) VALUES (@Codigo, @Nombre, @Marca, @Categoria, @Precio, @Descripcion)");
-                datos.setParametro("@Codigo", nuevo_articulo.codigo);
-                datos.setParametro("@Nombre", nuevo_articulo.nombre);
+                datos.setParametro("@Codigo", nuevo_articulo.Codigo);
+                datos.setParametro("@Nombre", nuevo_articulo.Nombre);
                 datos.setParametro("@Marca", nuevo_articulo.Marca.Id);
                 datos.setParametro("@Categoria", nuevo_articulo.Categoria.Id);
-                datos.setParametro("@Precio", nuevo_articulo.precio);
-                datos.setParametro("@Descripcion", nuevo_articulo.descripcion);
+                datos.setParametro("@Precio", nuevo_articulo.Precio);
+                datos.setParametro("@Descripcion", nuevo_articulo.Descripcion);
                 datos.ejecutarAccion();
             }
             catch (Exception ex)
@@ -83,6 +85,38 @@ namespace negocio
             {
                 datos.cerrarConexion();
             }
+        }
+
+
+        public void Modificar (Articulo articulo) 
+        {
+            AccesoDatos datos = new AccesoDatos (); 
+
+            try
+            {
+                datos.setConsulta("UPDATE ARTICULOS set Codigo = @codigo, Nombre = @nombre, Descripcion = @descripcion,idMarca = @marca,idCategoria = @categoria ,Precio = @precio where id = @id");
+                datos.setParametro("@id", articulo.ID);
+                datos.setParametro("@codigo", articulo.Codigo);
+                datos.setParametro("@nombre", articulo.Nombre);
+                datos.setParametro("@descripcion", articulo.Descripcion);
+                datos.setParametro("@precio", articulo.Precio);
+                datos.setParametro("@marca", articulo.Marca.Id);
+                datos.setParametro("@categoria", articulo.Categoria.Id);
+
+                datos.ejecutarLectura();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                throw ex;
+            }
+            finally 
+            { 
+                datos.cerrarConexion();
+            }
+               
+        
         }
     }    
 }
