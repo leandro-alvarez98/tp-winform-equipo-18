@@ -45,5 +45,21 @@ namespace TPWinForm_equipo_18
                 throw;
             }
         }
+
+        private void VentanaAñadirArticulo_Load(object sender, EventArgs e)
+        {
+            MarcaNegocio marcaNegocio = new MarcaNegocio();
+            CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
+            try
+            {
+                CbxMarca.DataSource = marcaNegocio.listar();
+                CbxCategoria.DataSource = categoriaNegocio.listar();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
+        }
     }
 }

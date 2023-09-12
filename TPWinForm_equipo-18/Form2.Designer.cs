@@ -147,6 +147,7 @@
             // 
             // CbxMarca
             // 
+            this.CbxMarca.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CbxMarca.FormattingEnabled = true;
             this.CbxMarca.Location = new System.Drawing.Point(106, 141);
             this.CbxMarca.Name = "CbxMarca";
@@ -155,6 +156,7 @@
             // 
             // CbxCategoria
             // 
+            this.CbxCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CbxCategoria.FormattingEnabled = true;
             this.CbxCategoria.Location = new System.Drawing.Point(106, 202);
             this.CbxCategoria.Name = "CbxCategoria";
@@ -201,6 +203,7 @@
             this.Name = "VentanaAñadirArticulo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cargar Articulos";
+            this.Load += new System.EventHandler(this.VentanaAñadirArticulo_Load);
             ((System.ComponentModel.ISupportInitialize)(this.PbxImagen)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
