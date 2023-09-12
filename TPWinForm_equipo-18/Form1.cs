@@ -27,11 +27,6 @@ namespace TPWinForm_equipo_18
             
         }
 
-        private void DgwListaArticulos_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void Ventana_Load(object sender, EventArgs e)
         {
             ArticuloNegocio Articulo_actual = new ArticuloNegocio();
@@ -43,6 +38,35 @@ namespace TPWinForm_equipo_18
             DgwListaArticulos.Columns["marca"].Visible = false;
             DgwListaArticulos.Columns["categoria"].Visible = false;
             DgwListaArticulos.Columns["urlimagen"].Visible = false;
+        }
+
+
+        private void btnHam_Click(object sender, EventArgs e)
+        {
+            sideBarTransition.Start();
+        }
+
+        bool sideBarExpand = true;
+        private void sideBarTransition_Tick(object sender, EventArgs e)
+        {
+            if (sideBarExpand)
+            {
+                sideBar.Width -= 10;
+                if (sideBar.Width <= 52)
+                {
+                    sideBarExpand = false;
+                    sideBarTransition.Stop();
+                }
+            }
+            else
+            {
+                sideBar.Width += 10;
+                if (sideBar.Width >= 186)
+                {
+                    sideBarExpand = true;
+                    sideBarTransition.Stop();
+                }
+            }
         }
     }
 }
