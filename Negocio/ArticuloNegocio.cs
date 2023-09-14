@@ -134,5 +134,105 @@ namespace negocio
                 throw ex;
             }
         }
+        //NUEVO FILTRO AVANZADO - falta optimizar algunas funcionalidades del id al momento de buscar el campo vacio, lo continuo en el siguiente push
+        public List<Articulo> filtrar(string campo, string criterio, string filtro)
+        {
+            List<Articulo> lista = new List<Articulo>();
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            { 
+                string consulta = "SELECT a.Id, a.Codigo, a.Nombre, a.Descripcion, m.Id as marca, m.Descripcion as mdescripcion, c.Id as categoria, c.Descripcion as cdescripcion, a.Precio FROM ARTICULOS a INNER JOIN MARCAS m ON m.Id = a.IdMarca INNER JOIN CATEGORIAS c ON c.Id = a.IdCategoria And ";
+                
+                switch (campo) {
+
+                    case "ID":
+                        switch (criterio)
+                        {
+                            case "Mayor a":
+                                consulta += "a.Id > " + filtro;
+                                break;
+                            case "Menor a":
+                                consulta += "a.Id < " + filtro;
+                                break;
+                            default:
+                                consulta += "a.Id = " + filtro;
+                                break;
+                        }
+                        break;
+
+                    case "Nombre":
+                        switch (criterio)
+                        {
+                            case "Comienza con":
+                                consulta += "a.Nombre like '" + filtro  + "% ' " ;
+                                break;
+                            case "Termina con":
+                                consulta += "a.Nombre like '%" + filtro + "'";
+                                break;
+                            default:
+                                consulta += "a.Nombre like '%" + filtro + "%'";
+                                break;
+                        }
+                        break;
+
+                    case "Descripcion":
+                        switch (criterio)
+                        {
+                            case "Comienza con":
+                                consulta += "a.Descripcion > '" + filtro + "% ' ";
+                                break;
+                            case "Termina con":
+                                consulta += "a.Descripcion '%" + filtro + "'";
+                                break;
+                            default:
+                                consulta += "a.Descripcion '%" + filtro + "%'";
+                                break;
+                        }
+                        break;
+
+                    default:
+                        break;
+                }
+
+                datos.setConsulta(consulta);
+                datos.ejecutarLectura();
+                while (datos.Lector.Read())
+                {
+                    Articulo objetoArticulo = new Articulo();
+
+                    objetoArticulo.ID = (int)datos.Lector["Id"];
+                    objetoArticulo.Codigo = (string)datos.Lector["Codigo"];
+                    objetoArticulo.Nombre = (string)datos.Lector["Nombre"];
+                    objetoArticulo.Descripcion = (string)datos.Lector["Descripcion"];
+
+                    objetoArticulo.Marca = new Marca();
+
+                    objetoArticulo.Marca.Id = (int)datos.Lector["marca"];
+                    objetoArticulo.Marca.Descripcion = (string)datos.Lector["mdescripcion"];
+
+                    objetoArticulo.Categoria = new Categoria();
+
+                    objetoArticulo.Categoria.Id = (int)datos.Lector["categoria"];
+                    objetoArticulo.Categoria.Descripcion = (string)datos.Lector["cdescripcion"];
+
+                    objetoArticulo.Precio = (decimal)datos.Lector["Precio"];
+
+                    //IMAGENES
+                    //objetoArticulo.urlImagen = (string)datos.Lector["ImagenUrl"];
+                    //if (!(datos.Lector["UrlImagen"] is DBNull))
+                    //  objetoArticulo.urlImagen = (string)datos.Lector["ImagenUrl"];
+
+                    lista.Add(objetoArticulo);
+                }
+
+                return lista;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }        
+        }
     }    
 }

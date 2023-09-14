@@ -32,12 +32,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Ventana));
             this.BtnCambiarImagen = new System.Windows.Forms.Button();
             this.DgwListaArticulos = new System.Windows.Forms.DataGridView();
-            this.CbxCategorias = new System.Windows.Forms.ComboBox();
+            this.CbxCampo = new System.Windows.Forms.ComboBox();
             this.LblBusqueda = new System.Windows.Forms.Label();
-            this.TxtBuscar = new System.Windows.Forms.TextBox();
-            this.LblCategorias = new System.Windows.Forms.Label();
-            this.LblMarca = new System.Windows.Forms.Label();
-            this.CbxMarcas = new System.Windows.Forms.ComboBox();
+            this.LblCampo = new System.Windows.Forms.Label();
+            this.LblCriterio = new System.Windows.Forms.Label();
+            this.CbxCriterio = new System.Windows.Forms.ComboBox();
             this.ImgLmagenes = new System.Windows.Forms.ImageList(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.Header = new System.Windows.Forms.Panel();
@@ -50,6 +49,8 @@
             this.sideBarTransition = new System.Windows.Forms.Timer(this.components);
             this.label2 = new System.Windows.Forms.Label();
             this.btnBuscar = new System.Windows.Forms.Button();
+            this.LblFiltroAvanzado = new System.Windows.Forms.Label();
+            this.txtFiltroAvanzado = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.DgwListaArticulos)).BeginInit();
             this.Header.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnHam)).BeginInit();
@@ -76,15 +77,17 @@
             this.DgwListaArticulos.Size = new System.Drawing.Size(931, 352);
             this.DgwListaArticulos.TabIndex = 4;
             // 
-            // CbxCategorias
+            // CbxCampo
             // 
-            this.CbxCategorias.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.CbxCategorias.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.CbxCategorias.FormattingEnabled = true;
-            this.CbxCategorias.Location = new System.Drawing.Point(794, 95);
-            this.CbxCategorias.Name = "CbxCategorias";
-            this.CbxCategorias.Size = new System.Drawing.Size(121, 21);
-            this.CbxCategorias.TabIndex = 5;
+            this.CbxCampo.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.CbxCampo.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.CbxCampo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CbxCampo.FormattingEnabled = true;
+            this.CbxCampo.Location = new System.Drawing.Point(794, 95);
+            this.CbxCampo.Name = "CbxCampo";
+            this.CbxCampo.Size = new System.Drawing.Size(121, 21);
+            this.CbxCampo.TabIndex = 5;
+            this.CbxCampo.SelectedIndexChanged += new System.EventHandler(this.CbxCampo_SelectedIndexChanged);
             // 
             // LblBusqueda
             // 
@@ -98,42 +101,36 @@
             this.LblBusqueda.TabIndex = 6;
             this.LblBusqueda.Text = "Buscar articulos";
             // 
-            // TxtBuscar
+            // LblCampo
             // 
-            this.TxtBuscar.Location = new System.Drawing.Point(202, 98);
-            this.TxtBuscar.Name = "TxtBuscar";
-            this.TxtBuscar.Size = new System.Drawing.Size(259, 20);
-            this.TxtBuscar.TabIndex = 7;
+            this.LblCampo.AutoSize = true;
+            this.LblCampo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.LblCampo.Location = new System.Drawing.Point(698, 96);
+            this.LblCampo.Name = "LblCampo";
+            this.LblCampo.Size = new System.Drawing.Size(62, 20);
+            this.LblCampo.TabIndex = 8;
+            this.LblCampo.Text = "Campo";
             // 
-            // LblCategorias
+            // LblCriterio
             // 
-            this.LblCategorias.AutoSize = true;
-            this.LblCategorias.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.LblCategorias.Location = new System.Drawing.Point(698, 96);
-            this.LblCategorias.Name = "LblCategorias";
-            this.LblCategorias.Size = new System.Drawing.Size(90, 20);
-            this.LblCategorias.TabIndex = 8;
-            this.LblCategorias.Text = "Categorias";
+            this.LblCriterio.AutoSize = true;
+            this.LblCriterio.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.LblCriterio.Location = new System.Drawing.Point(698, 124);
+            this.LblCriterio.Name = "LblCriterio";
+            this.LblCriterio.Size = new System.Drawing.Size(64, 20);
+            this.LblCriterio.TabIndex = 10;
+            this.LblCriterio.Text = "Criterio";
             // 
-            // LblMarca
+            // CbxCriterio
             // 
-            this.LblMarca.AutoSize = true;
-            this.LblMarca.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.LblMarca.Location = new System.Drawing.Point(698, 124);
-            this.LblMarca.Name = "LblMarca";
-            this.LblMarca.Size = new System.Drawing.Size(56, 20);
-            this.LblMarca.TabIndex = 10;
-            this.LblMarca.Text = "Marca";
-            // 
-            // CbxMarcas
-            // 
-            this.CbxMarcas.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.CbxMarcas.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.CbxMarcas.FormattingEnabled = true;
-            this.CbxMarcas.Location = new System.Drawing.Point(794, 126);
-            this.CbxMarcas.Name = "CbxMarcas";
-            this.CbxMarcas.Size = new System.Drawing.Size(121, 21);
-            this.CbxMarcas.TabIndex = 13;
+            this.CbxCriterio.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.CbxCriterio.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.CbxCriterio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CbxCriterio.FormattingEnabled = true;
+            this.CbxCriterio.Location = new System.Drawing.Point(794, 126);
+            this.CbxCriterio.Name = "CbxCriterio";
+            this.CbxCriterio.Size = new System.Drawing.Size(121, 21);
+            this.CbxCriterio.TabIndex = 13;
             // 
             // ImgLmagenes
             // 
@@ -276,7 +273,7 @@
             // 
             // btnBuscar
             // 
-            this.btnBuscar.Location = new System.Drawing.Point(202, 123);
+            this.btnBuscar.Location = new System.Drawing.Point(1022, 122);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(75, 23);
             this.btnBuscar.TabIndex = 21;
@@ -284,23 +281,41 @@
             this.btnBuscar.UseVisualStyleBackColor = true;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
+            // LblFiltroAvanzado
+            // 
+            this.LblFiltroAvanzado.AutoSize = true;
+            this.LblFiltroAvanzado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.LblFiltroAvanzado.Location = new System.Drawing.Point(930, 96);
+            this.LblFiltroAvanzado.Name = "LblFiltroAvanzado";
+            this.LblFiltroAvanzado.Size = new System.Drawing.Size(47, 20);
+            this.LblFiltroAvanzado.TabIndex = 23;
+            this.LblFiltroAvanzado.Text = "Filtro";
+            // 
+            // txtFiltroAvanzado
+            // 
+            this.txtFiltroAvanzado.Location = new System.Drawing.Point(995, 96);
+            this.txtFiltroAvanzado.Name = "txtFiltroAvanzado";
+            this.txtFiltroAvanzado.Size = new System.Drawing.Size(138, 20);
+            this.txtFiltroAvanzado.TabIndex = 24;
+            // 
             // Ventana
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.MintCream;
             this.ClientSize = new System.Drawing.Size(1145, 619);
+            this.Controls.Add(this.txtFiltroAvanzado);
+            this.Controls.Add(this.LblFiltroAvanzado);
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.sideBar);
             this.Controls.Add(this.Header);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.BtnCambiarImagen);
-            this.Controls.Add(this.CbxMarcas);
-            this.Controls.Add(this.LblMarca);
-            this.Controls.Add(this.LblCategorias);
-            this.Controls.Add(this.TxtBuscar);
+            this.Controls.Add(this.CbxCriterio);
+            this.Controls.Add(this.LblCriterio);
+            this.Controls.Add(this.LblCampo);
             this.Controls.Add(this.LblBusqueda);
-            this.Controls.Add(this.CbxCategorias);
+            this.Controls.Add(this.CbxCampo);
             this.Controls.Add(this.DgwListaArticulos);
             this.IsMdiContainer = true;
             this.MaximumSize = new System.Drawing.Size(1161, 658);
@@ -321,12 +336,11 @@
         #endregion
         private System.Windows.Forms.Button BtnCambiarImagen;
         private System.Windows.Forms.DataGridView DgwListaArticulos;
-        private System.Windows.Forms.ComboBox CbxCategorias;
+        private System.Windows.Forms.ComboBox CbxCampo;
         private System.Windows.Forms.Label LblBusqueda;
-        private System.Windows.Forms.TextBox TxtBuscar;
-        private System.Windows.Forms.Label LblCategorias;
-        private System.Windows.Forms.Label LblMarca;
-        private System.Windows.Forms.ComboBox CbxMarcas;
+        private System.Windows.Forms.Label LblCampo;
+        private System.Windows.Forms.Label LblCriterio;
+        private System.Windows.Forms.ComboBox CbxCriterio;
         private System.Windows.Forms.ImageList ImgLmagenes;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel Header;
@@ -339,6 +353,8 @@
         private System.Windows.Forms.Timer sideBarTransition;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnBuscar;
+        private System.Windows.Forms.Label LblFiltroAvanzado;
+        private System.Windows.Forms.TextBox txtFiltroAvanzado;
     }
 }
 

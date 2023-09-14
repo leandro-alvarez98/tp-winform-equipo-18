@@ -44,8 +44,8 @@ namespace TPWinForm_equipo_18
                    listaArticulos = negocio.listar();
                    DgwListaArticulos.DataSource = listaArticulos;
                    ocultar_Columnas();
-                   CbxCategorias.DataSource = Categoria_desplegable.listar();
-                   CbxMarcas.DataSource = Marca_desplegable.listar();
+                   //CbxCampo.DataSource = Categoria_desplegable.listar();
+                   //CbxCriterio.DataSource = Marca_desplegable.listar();
                }
                catch (Exception ex)
                {
@@ -61,6 +61,9 @@ namespace TPWinForm_equipo_18
         private void Ventana_Load(object sender, EventArgs e)
         {
             cargar_Componentes();
+            CbxCampo.Items.Add("ID");
+            CbxCampo.Items.Add("Nombre");
+            CbxCampo.Items.Add("Descripcion");
         }
 
         private void btnHam_Click(object sender, EventArgs e)
@@ -122,9 +125,27 @@ namespace TPWinForm_equipo_18
             }
         }
 
+        //NUEVO FILTRO AVANZADO - falta optimizar algunas funcionalidades del id al momento de buscar el campo vacio, lo continuo en el siguiente push
+
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            List<Articulo> listaFiltrada;
+            ArticuloNegocio negocio = new ArticuloNegocio();
+            try
+            {
+            string campo = CbxCampo.SelectedItem.ToString();
+            string criterio = CbxCriterio.SelectedItem.ToString();
+            string filtro = txtFiltroAvanzado.Text;
+                DgwListaArticulos.DataSource = negocio.filtrar(campo, criterio, filtro);
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
+            
+
+            //ES EL FILTRO ANTERIOR
+            /*List<Articulo> listaFiltrada;
             if(TxtBuscar.Text != "")
             {
                 listaFiltrada = listaArticulos.FindAll(articulo => articulo.Nombre.ToLower().Contains(TxtBuscar.Text.ToLower()) || articulo.Marca.Descripcion.ToLower().Contains(TxtBuscar.Text.ToLower()) || articulo.Categoria.Descripcion.ToLower().Contains(TxtBuscar.Text.ToLower()));
@@ -135,7 +156,26 @@ namespace TPWinForm_equipo_18
             }
             DgwListaArticulos.DataSource = null;
             DgwListaArticulos.DataSource = listaFiltrada;
-            ocultar_Columnas();
+            ocultar_Columnas();*/
+        }
+
+        private void CbxCampo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string opcion = CbxCampo.SelectedItem.ToString();
+            if (opcion == "ID")
+            {
+                CbxCriterio.Items.Clear();
+                CbxCriterio.Items.Add("Mayor a");
+                CbxCriterio.Items.Add("Menor a");
+                CbxCriterio.Items.Add("Igual a");
+            }
+            else {
+                CbxCriterio.Items.Clear();
+                CbxCriterio.Items.Add("Comienza con");
+                CbxCriterio.Items.Add("Termina con");
+                CbxCriterio.Items.Add("Contiene");
+            }
+
         }
     }
 }
