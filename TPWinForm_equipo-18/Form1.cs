@@ -43,7 +43,9 @@ namespace TPWinForm_equipo_18
                    //CARGA LAS LISTAS DESPLEGABLES Y LA GRILLA DE ARTICULOS
                    listaArticulos = negocio.listar();
                    DgwListaArticulos.DataSource = listaArticulos;
+                cargar_imagen(listaArticulos[0].Imagen.ImagenUrl);
                    ocultar_Columnas();
+
                    //CbxCampo.DataSource = Categoria_desplegable.listar();
                    //CbxCriterio.DataSource = Marca_desplegable.listar();
                }
@@ -56,8 +58,9 @@ namespace TPWinForm_equipo_18
 
         private void ocultar_Columnas()
         {
-            DgwListaArticulos.Columns["urlimagen"].Visible = false;
+            return;
         }
+
         private void Ventana_Load(object sender, EventArgs e)
         {
             cargar_Componentes();
@@ -72,6 +75,7 @@ namespace TPWinForm_equipo_18
         }
 
         bool sideBarExpand = true;
+
         private void sideBarTransition_Tick(object sender, EventArgs e)
         {
             if (sideBarExpand)
@@ -126,7 +130,6 @@ namespace TPWinForm_equipo_18
         }
 
         //NUEVO FILTRO AVANZADO - falta optimizar algunas funcionalidades del id al momento de buscar el campo vacio, lo continuo en el siguiente push
-
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             ArticuloNegocio negocio = new ArticuloNegocio();
@@ -176,6 +179,24 @@ namespace TPWinForm_equipo_18
                 CbxCriterio.Items.Add("Contiene");
             }
 
+        }
+
+        private void DgwListaArticulos_SelectionChanged(object sender, EventArgs e)
+        {
+            Articulo articulo_actual = (Articulo)DgwListaArticulos.CurrentRow.DataBoundItem;
+            cargar_imagen(articulo_actual.Imagen.ImagenUrl);
+        }   
+        private void cargar_imagen(string imagen)
+        {
+            try
+            {
+                pictureBox1.Load(imagen);
+            }
+            catch (Exception ex)
+            {
+
+                pictureBox1.Load("https://www.coalitionrc.com/wp-content/uploads/2017/01/placeholder.jpg");
+            }
         }
     }
 }

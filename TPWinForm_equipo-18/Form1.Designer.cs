@@ -51,15 +51,17 @@
             this.btnBuscar = new System.Windows.Forms.Button();
             this.LblFiltroAvanzado = new System.Windows.Forms.Label();
             this.txtFiltroAvanzado = new System.Windows.Forms.TextBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.DgwListaArticulos)).BeginInit();
             this.Header.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnHam)).BeginInit();
             this.sideBar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // BtnCambiarImagen
             // 
-            this.BtnCambiarImagen.Location = new System.Drawing.Point(1022, 532);
+            this.BtnCambiarImagen.Location = new System.Drawing.Point(897, 582);
             this.BtnCambiarImagen.Name = "BtnCambiarImagen";
             this.BtnCambiarImagen.Size = new System.Drawing.Size(111, 25);
             this.BtnCambiarImagen.TabIndex = 3;
@@ -70,12 +72,13 @@
             // 
             this.DgwListaArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgwListaArticulos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.DgwListaArticulos.Location = new System.Drawing.Point(202, 153);
+            this.DgwListaArticulos.Location = new System.Drawing.Point(202, 165);
             this.DgwListaArticulos.MultiSelect = false;
             this.DgwListaArticulos.Name = "DgwListaArticulos";
             this.DgwListaArticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DgwListaArticulos.Size = new System.Drawing.Size(931, 352);
+            this.DgwListaArticulos.Size = new System.Drawing.Size(689, 442);
             this.DgwListaArticulos.TabIndex = 4;
+            this.DgwListaArticulos.SelectionChanged += new System.EventHandler(this.DgwListaArticulos_SelectionChanged);
             // 
             // CbxCampo
             // 
@@ -142,12 +145,10 @@
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(199, 538);
+            this.label1.Location = new System.Drawing.Point(282, 538);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(695, 13);
+            this.label1.Size = new System.Drawing.Size(0, 13);
             this.label1.TabIndex = 15;
-            this.label1.Text = "aca podria ir  una lista de imagenes entonces podemos mostrar todas las imagenes " +
-    "que querramos pero bueno cambiandolas con el boton so easy";
             // 
             // Header
             // 
@@ -298,11 +299,21 @@
             this.txtFiltroAvanzado.Size = new System.Drawing.Size(138, 20);
             this.txtFiltroAvanzado.TabIndex = 24;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(913, 165);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(220, 220);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 26;
+            this.pictureBox1.TabStop = false;
+            // 
             // Ventana
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.MintCream;
             this.ClientSize = new System.Drawing.Size(1145, 619);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.txtFiltroAvanzado);
             this.Controls.Add(this.LblFiltroAvanzado);
             this.Controls.Add(this.btnBuscar);
@@ -328,6 +339,7 @@
             this.Header.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnHam)).EndInit();
             this.sideBar.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -355,6 +367,7 @@
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.Label LblFiltroAvanzado;
         private System.Windows.Forms.TextBox txtFiltroAvanzado;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

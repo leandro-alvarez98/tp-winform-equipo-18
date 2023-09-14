@@ -18,7 +18,7 @@ namespace negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setConsulta("SELECT a.Id, a.Codigo, a.Nombre, a.Descripcion, m.Id as marca, m.Descripcion as mdescripcion, c.Id as categoria, c.Descripcion as cdescripcion, a.Precio FROM ARTICULOS a INNER JOIN MARCAS m ON m.Id = a.IdMarca INNER JOIN CATEGORIAS c ON c.Id = a.IdCategoria");
+                datos.setConsulta("SELECT a.Id, a.Codigo, a.Nombre, a.Descripcion, m.Id as marca, m.Descripcion as mdescripcion, c.Id as categoria, c.Descripcion as cdescripcion, a.Precio, i.ImagenUrl FROM ARTICULOS a INNER JOIN MARCAS m ON m.Id = a.IdMarca INNER JOIN CATEGORIAS c ON c.Id = a.IdCategoria INNER JOIN IMAGENES i ON i.IdArticulo = a.Id");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
@@ -42,10 +42,8 @@ namespace negocio
 
                     objetoArticulo.Precio = (decimal)datos.Lector["Precio"];
 
-                    //IMAGENES
-                    //objetoArticulo.urlImagen = (string)datos.Lector["ImagenUrl"];
-                    //if (!(datos.Lector["UrlImagen"] is DBNull))
-                    //  objetoArticulo.urlImagen = (string)datos.Lector["ImagenUrl"];
+                    objetoArticulo.Imagen = new Imagen();
+                    objetoArticulo.Imagen.ImagenUrl = (string)datos.Lector["ImagenUrl"];
 
                     lista.Add(objetoArticulo);
                 }
