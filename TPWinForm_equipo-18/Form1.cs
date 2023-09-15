@@ -177,12 +177,17 @@ namespace TPWinForm_equipo_18
             }
 
         }
+
+
+
+
         private void DgwListaArticulos_SelectionChanged(object sender, EventArgs e)
         {
             Articulo articulo_actual = (Articulo)DgwListaArticulos.CurrentRow.DataBoundItem;
 
             cargar_imagen(articulo_actual.Imagen.ImagenUrl);
         }
+
         private void eliminar_repetidos()
         {
             List<Articulo> repetidos = new List<Articulo>();
@@ -192,6 +197,7 @@ namespace TPWinForm_equipo_18
                 listaArticulos.Remove(repetido);
             }
         }
+
         private void agrupar_imagenes()
         {
             List<Articulo> repetidos = new List<Articulo>();
@@ -243,12 +249,33 @@ namespace TPWinForm_equipo_18
                 cont_imagen++;
                 Articulo articulo_actual = (Articulo)DgwListaArticulos.CurrentRow.DataBoundItem;
                 cargar_imagen(articulo_actual.Imagenes[cont_imagen]);
+                
+            }
+            catch (Exception )
+            {
+                cont_imagen = 0;
+                Articulo articulo_actual = (Articulo)DgwListaArticulos.CurrentRow.DataBoundItem;
+                cargar_imagen(articulo_actual.Imagenes[0]);    
+            }
+            
+        }
+
+        private void BtnImagenanterior_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                cont_imagen--;
+                Articulo articulo_actual = (Articulo)DgwListaArticulos.CurrentRow.DataBoundItem;
+
+                 cargar_imagen(articulo_actual.Imagenes[cont_imagen]);
+                 
             }
             catch (Exception)
             {
                 cont_imagen = 0;
                 Articulo articulo_actual = (Articulo)DgwListaArticulos.CurrentRow.DataBoundItem;
-                cargar_imagen(articulo_actual.Imagenes[0]);
+                cargar_imagen(articulo_actual.Imagenes[cont_imagen]);
+
             }
         }
     }

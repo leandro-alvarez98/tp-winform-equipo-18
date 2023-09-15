@@ -52,6 +52,7 @@
             this.LblFiltroAvanzado = new System.Windows.Forms.Label();
             this.txtFiltroAvanzado = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.BtnImagenanterior = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DgwListaArticulos)).BeginInit();
             this.Header.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnHam)).BeginInit();
@@ -63,9 +64,9 @@
             // 
             this.BtnCambiarImagen.Location = new System.Drawing.Point(913, 391);
             this.BtnCambiarImagen.Name = "BtnCambiarImagen";
-            this.BtnCambiarImagen.Size = new System.Drawing.Size(111, 25);
+            this.BtnCambiarImagen.Size = new System.Drawing.Size(99, 25);
             this.BtnCambiarImagen.TabIndex = 3;
-            this.BtnCambiarImagen.Text = "Cambiar Imagen";
+            this.BtnCambiarImagen.Text = "Siguiente imagen";
             this.BtnCambiarImagen.UseVisualStyleBackColor = true;
             this.BtnCambiarImagen.Click += new System.EventHandler(this.BtnCambiarImagen_Click);
             // 
@@ -310,11 +311,22 @@
             this.pictureBox1.TabIndex = 26;
             this.pictureBox1.TabStop = false;
             // 
+            // BtnImagenanterior
+            // 
+            this.BtnImagenanterior.Location = new System.Drawing.Point(1041, 393);
+            this.BtnImagenanterior.Name = "BtnImagenanterior";
+            this.BtnImagenanterior.Size = new System.Drawing.Size(92, 23);
+            this.BtnImagenanterior.TabIndex = 28;
+            this.BtnImagenanterior.Text = "Imagen anterior";
+            this.BtnImagenanterior.UseVisualStyleBackColor = true;
+            this.BtnImagenanterior.Click += new System.EventHandler(this.BtnImagenanterior_Click);
+            // 
             // Ventana
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(131)))), ((int)(((byte)(116)))));
+            this.BackColor = System.Drawing.Color.Teal;
             this.ClientSize = new System.Drawing.Size(1145, 619);
+            this.Controls.Add(this.BtnImagenanterior);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.txtFiltroAvanzado);
             this.Controls.Add(this.LblFiltroAvanzado);
@@ -370,6 +382,7 @@
         private System.Windows.Forms.Label LblFiltroAvanzado;
         private System.Windows.Forms.TextBox txtFiltroAvanzado;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button BtnImagenanterior;
     }
 }
 
