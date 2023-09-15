@@ -17,52 +17,52 @@ namespace TPWinForm_equipo_18
     {
         private List<Articulo> listaArticulos;
 
+        bool sideBarExpand = true;
+
         public Ventana()
         {
             InitializeComponent();
         }
-
         private void BtnAgregar_Click(object sender, EventArgs e)
         {
             
-            VentanaAñadirArticulo venatana_agregar = new VentanaAñadirArticulo();
-            venatana_agregar.ShowDialog();
+            VentanaAñadirArticulo ventana_agregar = new VentanaAñadirArticulo();
+            ventana_agregar.ShowDialog();
             cargar_Componentes();
             
         }
-
         private void cargar_Componentes()
         {
           
-              CategoriaNegocio Categoria_desplegable = new CategoriaNegocio();
-              MarcaNegocio Marca_desplegable = new MarcaNegocio();
-              ArticuloNegocio negocio = new ArticuloNegocio();
+            CategoriaNegocio Categoria_desplegable = new CategoriaNegocio();
+            MarcaNegocio Marca_desplegable = new MarcaNegocio();
+            ArticuloNegocio negocio = new ArticuloNegocio();
 
-               try
-               {
-                   //CARGA LAS LISTAS DESPLEGABLES Y LA GRILLA DE ARTICULOS
-                   listaArticulos = negocio.listar();
-                   DgwListaArticulos.DataSource = listaArticulos;
-                   cargar_imagen(listaArticulos[0].Imagen.ImagenUrl);
-                   ocultar_Columnas();
+            try
+            {
+                //CARGA LAS LISTAS DESPLEGABLES Y LA GRILLA DE ARTICULOS
+                listaArticulos = negocio.listar();
 
-                   //CbxCampo.DataSource = Categoria_desplegable.listar();
-                   //CbxCriterio.DataSource = Marca_desplegable.listar();
-               }
-               catch (Exception ex)
-               {
+                eliminar_repetidos();
+
+                DgwListaArticulos.DataSource = listaArticulos;
+
+                cargar_imagen(listaArticulos[0].Imagen.ImagenUrl);
+
+                ocultar_Columnas();
+            }
+            catch (Exception ex)
+            {
                    MessageBox.Show(ex.ToString());
                    throw;
-               }
+            }
         }
-
         private void ocultar_Columnas()
         {
             DgwListaArticulos.Columns["ID"].Visible = false;
             DgwListaArticulos.Columns["IMAGEN"].Visible = false;
             return;
         }
-
         private void Ventana_Load(object sender, EventArgs e)
         {
             cargar_Componentes();
@@ -70,14 +70,10 @@ namespace TPWinForm_equipo_18
             CbxCampo.Items.Add("Nombre");
             CbxCampo.Items.Add("Descripcion");
         }
-
         private void btnHam_Click(object sender, EventArgs e)
         {
             sideBarTransition.Start();
         }
-
-        bool sideBarExpand = true;
-
         private void sideBarTransition_Tick(object sender, EventArgs e)
         {
             if (sideBarExpand)
@@ -99,7 +95,6 @@ namespace TPWinForm_equipo_18
                 }
             }
         }
-
         private void BtnModificar_Click(object sender, EventArgs e)
         {
             Articulo articulo_seleccionado;
@@ -109,7 +104,6 @@ namespace TPWinForm_equipo_18
             modificar.ShowDialog();
             cargar_Componentes();
         }
-
         private void BtnEliminar_Click(object sender, EventArgs e)
         {
             ArticuloNegocio negocio = new ArticuloNegocio();
@@ -163,7 +157,6 @@ namespace TPWinForm_equipo_18
             DgwListaArticulos.DataSource = listaFiltrada;
             ocultar_Columnas();*/
         }
-
         private void CbxCampo_SelectedIndexChanged(object sender, EventArgs e)
         {
             string opcion = CbxCampo.SelectedItem.ToString();
@@ -182,13 +175,26 @@ namespace TPWinForm_equipo_18
             }
 
         }
-
         private void DgwListaArticulos_SelectionChanged(object sender, EventArgs e)
         {
             Articulo articulo_actual = (Articulo)DgwListaArticulos.CurrentRow.DataBoundItem;
             cargar_imagen(articulo_actual.Imagen.ImagenUrl);
-        }   
+        }
+        private void eliminar_repetidos()
+        {
+            HashSet<int> ids_revisados = new HashSet<int>();
+            Articulo repetido = new Articulo();
 
+            foreach (Articulo articulo_actual in listaArticulos)
+            {
+                if (!ids_revisados.Add(articulo_actual.ID))
+                {
+                    repetido = articulo_actual;
+                }
+
+            }
+            listaArticulos.Remove(repetido);
+        }
         private void cargar_imagen(string url_imagen)
         {
             try
@@ -201,8 +207,5 @@ namespace TPWinForm_equipo_18
                 pictureBox1.Load("https://www.coalitionrc.com/wp-content/uploads/2017/01/placeholder.jpg");
             }
         }
-
-
-        
     }
 }

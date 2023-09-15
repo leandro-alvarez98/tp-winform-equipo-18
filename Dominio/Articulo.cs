@@ -21,6 +21,6 @@ namespace dominio
 
         public Imagen Imagen { get; set; }
 
-       
+        public List<String> Imagenes;
     }
 }

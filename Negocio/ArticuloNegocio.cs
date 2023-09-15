@@ -39,7 +39,7 @@ namespace negocio
                     }
                     else
                     {
-                        objetoArticulo.Nombre = "sin nombre";
+                        objetoArticulo.Nombre = "-";
                     }
                     if (!(datos.Lector["Descripcion"] is DBNull))
                     {
@@ -47,7 +47,7 @@ namespace negocio
                     }
                     else
                     {
-                        objetoArticulo.Descripcion = "sin descripcion";
+                        objetoArticulo.Descripcion = "-";
                     }
 
                     objetoArticulo.Marca = new Marca();
@@ -69,7 +69,7 @@ namespace negocio
                         objetoArticulo.Categoria.Descripcion = (string)datos.Lector["cdescripcion"];
                     }else
                     {
-                        objetoArticulo.Categoria.Descripcion = "vacio";
+                        objetoArticulo.Categoria.Descripcion = "-";
                     }
 
                     if (!(datos.Lector["Precio"] is DBNull))
@@ -81,7 +81,7 @@ namespace negocio
                   
                     objetoArticulo.Imagen.ImagenUrl = (string)datos.Lector["link"];
 
-
+                    //objetoArticulo.Imagenes.Add((string)datos.Lector["link"]);
 
                     lista.Add(objetoArticulo);
                 }
