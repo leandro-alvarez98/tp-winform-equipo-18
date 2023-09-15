@@ -183,9 +183,9 @@ namespace TPWinForm_equipo_18
 
         private void DgwListaArticulos_SelectionChanged(object sender, EventArgs e)
         {
-            Articulo articulo_actual = (Articulo)DgwListaArticulos.CurrentRow.DataBoundItem;
+          //  Articulo articulo_actual = (Articulo)DgwListaArticulos.CurrentRow.DataBoundItem;
 
-            cargar_imagen(articulo_actual.Imagen.ImagenUrl);
+           // cargar_imagen(articulo_actual.Imagen.ImagenUrl);
         }
 
         private void eliminar_repetidos()
