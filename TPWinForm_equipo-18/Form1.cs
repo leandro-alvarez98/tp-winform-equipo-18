@@ -126,13 +126,50 @@ namespace TPWinForm_equipo_18
                 MessageBox.Show(ex.ToString());
             }
         }
+        //funcion de validar filtro
+        private bool validarFiltro() {
 
-        //NUEVO FILTRO AVANZADO - falta optimizar algunas funcionalidades del id al momento de buscar el campo vacio, lo continuo en el siguiente push
+            if (CbxCampo.SelectedIndex < 0) {
+                MessageBox.Show("Por favor, seleccione el campo para filtrar.");
+                return true;
+            }
+            if(CbxCriterio.SelectedIndex < 0)
+            {
+                MessageBox.Show("Por favor, seleccione el criterio para filtrar.");
+                return true;
+            }
+            if (CbxCampo.SelectedItem.ToString() == "ID") {
+
+                if (string.IsNullOrEmpty(txtFiltroAvanzado.Text)) {
+                    MessageBox.Show("Debes cargar el filtro para numericos...");
+                    return true;
+                }
+
+                if (!(soloNumeros(txtFiltroAvanzado.Text))) {
+                    MessageBox.Show("Solo numeros para filtrar por el campo numerico...");
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        private bool soloNumeros(string cadena) {
+            foreach (char caracter in cadena)
+            {
+                if (!(char.IsNumber(caracter)))
+                    return false;
+            }
+            return true;
+        }
+
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             ArticuloNegocio negocio = new ArticuloNegocio();
             try
             {
+                if (validarFiltro()) {
+                    return;
+                }
             string campo = CbxCampo.SelectedItem.ToString();
             string criterio = CbxCriterio.SelectedItem.ToString();
             string filtro = txtFiltroAvanzado.Text;
