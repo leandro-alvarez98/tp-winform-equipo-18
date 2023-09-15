@@ -76,7 +76,7 @@
             this.DgwListaArticulos.MultiSelect = false;
             this.DgwListaArticulos.Name = "DgwListaArticulos";
             this.DgwListaArticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DgwListaArticulos.Size = new System.Drawing.Size(689, 442);
+            this.DgwListaArticulos.Size = new System.Drawing.Size(689, 220);
             this.DgwListaArticulos.TabIndex = 4;
             this.DgwListaArticulos.SelectionChanged += new System.EventHandler(this.DgwListaArticulos_SelectionChanged);
             // 
@@ -152,7 +152,7 @@
             // 
             // Header
             // 
-            this.Header.BackColor = System.Drawing.Color.LightYellow;
+            this.Header.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(131)))), ((int)(((byte)(116)))));
             this.Header.Controls.Add(this.lblTitulo);
             this.Header.Controls.Add(this.btnHam);
             this.Header.Dock = System.Windows.Forms.DockStyle.Top;
@@ -188,10 +188,11 @@
             // BtnAgregar
             // 
             this.BtnAgregar.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.BtnAgregar.BackColor = System.Drawing.Color.Transparent;
+            this.BtnAgregar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(72)))), ((int)(((byte)(103)))));
             this.BtnAgregar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BtnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.BtnAgregar.ForeColor = System.Drawing.Color.Black;
+            this.BtnAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnAgregar.ForeColor = System.Drawing.Color.Silver;
             this.BtnAgregar.Image = ((System.Drawing.Image)(resources.GetObject("BtnAgregar.Image")));
             this.BtnAgregar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BtnAgregar.Location = new System.Drawing.Point(0, 25);
@@ -206,7 +207,7 @@
             // 
             // sideBar
             // 
-            this.sideBar.BackColor = System.Drawing.Color.FloralWhite;
+            this.sideBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(131)))), ((int)(((byte)(116)))));
             this.sideBar.Controls.Add(this.BtnAgregar);
             this.sideBar.Controls.Add(this.BtnModificar);
             this.sideBar.Controls.Add(this.BtnEliminar);
@@ -311,7 +312,7 @@
             // Ventana
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.BackColor = System.Drawing.Color.MintCream;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(131)))), ((int)(((byte)(116)))));
             this.ClientSize = new System.Drawing.Size(1145, 619);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.txtFiltroAvanzado);

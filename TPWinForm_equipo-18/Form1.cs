@@ -43,7 +43,7 @@ namespace TPWinForm_equipo_18
                    //CARGA LAS LISTAS DESPLEGABLES Y LA GRILLA DE ARTICULOS
                    listaArticulos = negocio.listar();
                    DgwListaArticulos.DataSource = listaArticulos;
-                cargar_imagen(listaArticulos[0].Imagen.ImagenUrl);
+                   cargar_imagen(listaArticulos[0].Imagen.ImagenUrl);
                    ocultar_Columnas();
 
                    //CbxCampo.DataSource = Categoria_desplegable.listar();
@@ -58,6 +58,8 @@ namespace TPWinForm_equipo_18
 
         private void ocultar_Columnas()
         {
+            DgwListaArticulos.Columns["ID"].Visible = false;
+            DgwListaArticulos.Columns["IMAGEN"].Visible = false;
             return;
         }
 
@@ -186,17 +188,21 @@ namespace TPWinForm_equipo_18
             Articulo articulo_actual = (Articulo)DgwListaArticulos.CurrentRow.DataBoundItem;
             cargar_imagen(articulo_actual.Imagen.ImagenUrl);
         }   
-        private void cargar_imagen(string imagen)
+
+        private void cargar_imagen(string url_imagen)
         {
             try
             {
-                pictureBox1.Load(imagen);
+                pictureBox1.Load(url_imagen);
             }
-            catch (Exception ex)
+            catch (Exception )
             {
 
                 pictureBox1.Load("https://www.coalitionrc.com/wp-content/uploads/2017/01/placeholder.jpg");
             }
         }
+
+
+        
     }
 }
