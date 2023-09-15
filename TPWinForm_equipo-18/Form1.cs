@@ -43,11 +43,13 @@ namespace TPWinForm_equipo_18
                 //CARGA LAS LISTAS DESPLEGABLES Y LA GRILLA DE ARTICULOS
                 listaArticulos = negocio.listar();
 
+                agrupar_imagenes();
+
                 eliminar_repetidos();
 
                 DgwListaArticulos.DataSource = listaArticulos;
 
-                cargar_imagen(listaArticulos[0].Imagen.ImagenUrl);
+                cargar_imagen(listaArticulos[0].Imagenes[0]);
 
                 ocultar_Columnas();
             }
@@ -178,22 +180,47 @@ namespace TPWinForm_equipo_18
         private void DgwListaArticulos_SelectionChanged(object sender, EventArgs e)
         {
             Articulo articulo_actual = (Articulo)DgwListaArticulos.CurrentRow.DataBoundItem;
+
             cargar_imagen(articulo_actual.Imagen.ImagenUrl);
         }
         private void eliminar_repetidos()
         {
+            List<Articulo> repetidos = new List<Articulo>();
+            repetidos = get_repetidos();
+            foreach(Articulo repetido in repetidos)
+            {
+                listaArticulos.Remove(repetido);
+            }
+        }
+        private void agrupar_imagenes()
+        {
+            List<Articulo> repetidos = new List<Articulo>();
+            repetidos = get_repetidos();
+            foreach (Articulo articulo in listaArticulos)
+            {
+                foreach (Articulo repetido in repetidos)
+                {
+                    if (repetido.ID == articulo.ID)
+                    {
+                        articulo.Imagenes.Add(repetido.Imagen.ImagenUrl);
+                    }
+                }
+            }
+        }
+        private List<Articulo> get_repetidos()
+        {
             HashSet<int> ids_revisados = new HashSet<int>();
-            Articulo repetido = new Articulo();
+
+            List<Articulo> repetidos = new List<Articulo>();
 
             foreach (Articulo articulo_actual in listaArticulos)
             {
                 if (!ids_revisados.Add(articulo_actual.ID))
                 {
-                    repetido = articulo_actual;
+                    repetidos.Add(articulo_actual);
                 }
-
             }
-            listaArticulos.Remove(repetido);
+            return repetidos;
         }
         private void cargar_imagen(string url_imagen)
         {
@@ -205,6 +232,23 @@ namespace TPWinForm_equipo_18
             {
 
                 pictureBox1.Load("https://www.coalitionrc.com/wp-content/uploads/2017/01/placeholder.jpg");
+            }
+        }
+
+        private int cont_imagen = 0;
+        private void BtnCambiarImagen_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                cont_imagen++;
+                Articulo articulo_actual = (Articulo)DgwListaArticulos.CurrentRow.DataBoundItem;
+                cargar_imagen(articulo_actual.Imagenes[cont_imagen]);
+            }
+            catch (Exception)
+            {
+                cont_imagen = 0;
+                Articulo articulo_actual = (Articulo)DgwListaArticulos.CurrentRow.DataBoundItem;
+                cargar_imagen(articulo_actual.Imagenes[0]);
             }
         }
     }

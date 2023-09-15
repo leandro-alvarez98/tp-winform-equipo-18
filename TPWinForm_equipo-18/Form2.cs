@@ -15,7 +15,6 @@ namespace TPWinForm_equipo_18
     public partial class VentanaAñadirArticulo : Form
     {
         private Articulo articulo = null;
-        private OpenFileDialog archivo = null;
 
         public VentanaAñadirArticulo()
         {

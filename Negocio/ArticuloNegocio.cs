@@ -78,10 +78,10 @@ namespace negocio
                     }
 
                     objetoArticulo.Imagen = new Imagen();
-                  
                     objetoArticulo.Imagen.ImagenUrl = (string)datos.Lector["link"];
 
-                    //objetoArticulo.Imagenes.Add((string)datos.Lector["link"]);
+                    objetoArticulo.Imagenes = new List<String>();
+                    objetoArticulo.Imagenes.Add((string)datos.Lector["link"]);
 
                     lista.Add(objetoArticulo);
                 }
@@ -271,9 +271,5 @@ namespace negocio
                 throw ex;
             }        
         }
-
-
-
-
     }    
 }

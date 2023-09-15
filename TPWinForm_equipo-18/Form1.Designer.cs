@@ -61,12 +61,13 @@
             // 
             // BtnCambiarImagen
             // 
-            this.BtnCambiarImagen.Location = new System.Drawing.Point(897, 582);
+            this.BtnCambiarImagen.Location = new System.Drawing.Point(913, 391);
             this.BtnCambiarImagen.Name = "BtnCambiarImagen";
             this.BtnCambiarImagen.Size = new System.Drawing.Size(111, 25);
             this.BtnCambiarImagen.TabIndex = 3;
             this.BtnCambiarImagen.Text = "Cambiar Imagen";
             this.BtnCambiarImagen.UseVisualStyleBackColor = true;
+            this.BtnCambiarImagen.Click += new System.EventHandler(this.BtnCambiarImagen_Click);
             // 
             // DgwListaArticulos
             // 
