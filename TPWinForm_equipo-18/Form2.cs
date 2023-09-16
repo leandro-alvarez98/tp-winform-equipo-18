@@ -53,7 +53,8 @@ namespace TPWinForm_equipo_18
                 {
                     negocio.Modificar(articulo);
                     MessageBox.Show("Modificado correctamente");
-                }else
+                }
+                else
                 {
                     negocio.agregar(articulo);
                     MessageBox.Show("Articulo añadido correctamente!");

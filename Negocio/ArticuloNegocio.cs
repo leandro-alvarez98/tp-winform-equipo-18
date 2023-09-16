@@ -18,7 +18,7 @@ namespace negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setConsulta("SELECT  a.Id, a.Codigo, a.Nombre, a.Descripcion, a.IdMarca as marca, a.IdCategoria as categoria, a.Precio,m.Descripcion as mdescripcion,i.ImagenUrl as link, c.Descripcion as cdescripcion FROM ARTICULOS a INNER JOIN MARCAS m ON m.Id = a.IdMarca  INNER JOIN IMAGENES i ON i.IdArticulo = a.Id  left JOIN CATEGORIAS c ON c.Id = a.IdCategoria");
+                datos.setConsulta("SELECT a.Id, a.Codigo, a.Nombre, a.Descripcion, a.IdMarca as marca, a.IdCategoria as categoria, a.Precio,m.Descripcion as mdescripcion,i.ImagenUrl as link, c.Descripcion as cdescripcion FROM ARTICULOS a INNER JOIN MARCAS m ON m.Id = a.IdMarca  INNER JOIN IMAGENES i ON i.IdArticulo = a.Id  left JOIN CATEGORIAS c ON c.Id = a.IdCategoria");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
@@ -73,15 +73,14 @@ namespace negocio
                     }
 
                     if (!(datos.Lector["Precio"] is DBNull))
-                    {
                         objetoArticulo.Precio = (decimal)datos.Lector["Precio"];
-                    }
-
-                    objetoArticulo.Imagen = new Imagen();
-                    objetoArticulo.Imagen.ImagenUrl = (string)datos.Lector["link"];
-
+                    
                     objetoArticulo.Imagenes = new List<String>();
-                    objetoArticulo.Imagenes.Add((string)datos.Lector["link"]);
+
+                    if (!(datos.Lector["link"] is DBNull))
+                        objetoArticulo.Imagenes.Add((string)datos.Lector["link"]);
+                    else
+                        objetoArticulo.Imagenes.Add("--");
 
                     lista.Add(objetoArticulo);
                 }
@@ -97,20 +96,20 @@ namespace negocio
                 datos.cerrarConexion();
             }
         }
-       
-
         public void agregar(Articulo nuevo_articulo)
         {
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setConsulta("INSERT INTO ARTICULOS (Codigo, Nombre, IdMarca, IdCategoria, Precio, Descripcion) VALUES (@Codigo, @Nombre, @Marca, @Categoria, @Precio, @Descripcion)");
+                datos.setConsulta("INSERT INTO ARTICULOS (Codigo, Nombre, IdMarca, IdCategoria, Precio, Descripcion) VALUES (@Codigo, @Nombre, @Marca, @Categoria, @Precio, @Descripcion) INSERT INTO IMAGENES (IdArticulo, ImagenUrl) VALUES (@IdArticulo, @ImagenUrl)");
                 datos.setParametro("@Codigo", nuevo_articulo.Codigo);
                 datos.setParametro("@Nombre", nuevo_articulo.Nombre);
                 datos.setParametro("@Marca", nuevo_articulo.Marca.Id);
                 datos.setParametro("@Categoria", nuevo_articulo.Categoria.Id);
                 datos.setParametro("@Precio", nuevo_articulo.Precio);
                 datos.setParametro("@Descripcion", nuevo_articulo.Descripcion);
+                datos.setParametro("@IdArticulo", nuevo_articulo.ID);
+                datos.setParametro("@ImagenUrl", nuevo_articulo.Imagenes[0]);
                 datos.ejecutarAccion();
             }
             catch (Exception ex)
@@ -123,8 +122,6 @@ namespace negocio
                 datos.cerrarConexion();
             }
         }
-
-
         public void Modificar (Articulo articulo) 
         {
             AccesoDatos datos = new AccesoDatos (); 
@@ -155,7 +152,6 @@ namespace negocio
                
         
         }
-
         public void Eliminar(int id)
         {
             try
@@ -171,7 +167,6 @@ namespace negocio
                 throw ex;
             }
         }
-        //NUEVO FILTRO AVANZADO - falta optimizar algunas funcionalidades del id al momento de buscar el campo vacio, lo continuo en el siguiente push
         public List<Articulo> filtrar(string campo, string criterio, string filtro)
         {
             List<Articulo> lista = new List<Articulo>();
@@ -233,7 +228,9 @@ namespace negocio
                 }
 
                 datos.setConsulta(consulta);
+
                 datos.ejecutarLectura();
+
                 while (datos.Lector.Read())
                 {
                     Articulo objetoArticulo = new Articulo();
@@ -254,11 +251,6 @@ namespace negocio
                     objetoArticulo.Categoria.Descripcion = (string)datos.Lector["cdescripcion"];
 
                     objetoArticulo.Precio = (decimal)datos.Lector["Precio"];
-
-                    //IMAGENES
-                    //objetoArticulo.urlImagen = (string)datos.Lector["ImagenUrl"];
-                    //if (!(datos.Lector["UrlImagen"] is DBNull))
-                    //  objetoArticulo.urlImagen = (string)datos.Lector["ImagenUrl"];
 
                     lista.Add(objetoArticulo);
                 }

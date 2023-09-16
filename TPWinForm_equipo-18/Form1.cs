@@ -25,38 +25,34 @@ namespace TPWinForm_equipo_18
         }
         private void BtnAgregar_Click(object sender, EventArgs e)
         {
-            
+
             VentanaAñadirArticulo ventana_agregar = new VentanaAñadirArticulo();
             ventana_agregar.ShowDialog();
             cargar_Componentes();
-            
         }
         private void cargar_Componentes()
         {
-          
-            CategoriaNegocio Categoria_desplegable = new CategoriaNegocio();
-            MarcaNegocio Marca_desplegable = new MarcaNegocio();
             ArticuloNegocio negocio = new ArticuloNegocio();
-
             try
             {
-                //CARGA LAS LISTAS DESPLEGABLES Y LA GRILLA DE ARTICULOS
                 listaArticulos = negocio.listar();
 
                 agrupar_imagenes();
 
                 eliminar_repetidos();
-
+                
                 DgwListaArticulos.DataSource = listaArticulos;
 
                 cargar_imagen(listaArticulos[0].Imagenes[0]);
 
                 ocultar_Columnas();
+
+                DgwListaArticulos.Focus();
             }
             catch (Exception ex)
             {
-                   MessageBox.Show(ex.ToString());
-                   throw;
+                MessageBox.Show(ex.ToString());
+                throw;
             }
         }
         private void ocultar_Columnas()
@@ -112,8 +108,8 @@ namespace TPWinForm_equipo_18
             Articulo articulo_a_eliminar = new Articulo();
             try
             {
-                DialogResult desicion = MessageBox.Show("¿Desea eliminar el artículo?+", "Eliminando", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if(desicion == DialogResult.Yes)
+                DialogResult desicion = MessageBox.Show("¿Desea eliminar el artículo?", "Eliminando", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (desicion == DialogResult.Yes)
                 {
                     articulo_a_eliminar = (Articulo)DgwListaArticulos.CurrentRow.DataBoundItem;
                     negocio.Eliminar(articulo_a_eliminar.ID);
@@ -126,14 +122,13 @@ namespace TPWinForm_equipo_18
                 MessageBox.Show(ex.ToString());
             }
         }
-        //funcion de validar filtro
         private bool validarFiltro() {
 
             if (CbxCampo.SelectedIndex < 0) {
                 MessageBox.Show("Por favor, seleccione el campo para filtrar.");
                 return true;
             }
-            if(CbxCriterio.SelectedIndex < 0)
+            if (CbxCriterio.SelectedIndex < 0)
             {
                 MessageBox.Show("Por favor, seleccione el criterio para filtrar.");
                 return true;
@@ -152,7 +147,6 @@ namespace TPWinForm_equipo_18
             }
             return false;
         }
-
         private bool soloNumeros(string cadena) {
             foreach (char caracter in cadena)
             {
@@ -161,7 +155,6 @@ namespace TPWinForm_equipo_18
             }
             return true;
         }
-
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             ArticuloNegocio negocio = new ArticuloNegocio();
@@ -170,17 +163,22 @@ namespace TPWinForm_equipo_18
                 if (validarFiltro()) {
                     return;
                 }
-            string campo = CbxCampo.SelectedItem.ToString();
-            string criterio = CbxCriterio.SelectedItem.ToString();
-            string filtro = txtFiltroAvanzado.Text;
+                string campo = CbxCampo.SelectedItem.ToString();
+                string criterio = CbxCriterio.SelectedItem.ToString();
+                string filtro = txtFiltroAvanzado.Text;
                 DgwListaArticulos.DataSource = negocio.filtrar(campo, criterio, filtro);
+
+                if(DgwListaArticulos.CurrentRow == null)
+                {
+                    BtnCambiarImagen.Enabled = false;
+                }
             }
             catch (Exception ex)
             {
 
                 MessageBox.Show(ex.ToString());
             }
-            
+
 
             //ES EL FILTRO ANTERIOR
             /*List<Articulo> listaFiltrada;
@@ -214,27 +212,24 @@ namespace TPWinForm_equipo_18
             }
 
         }
-
-
-
-
         private void DgwListaArticulos_SelectionChanged(object sender, EventArgs e)
         {
-          //  Articulo articulo_actual = (Articulo)DgwListaArticulos.CurrentRow.DataBoundItem;
-
-           // cargar_imagen(articulo_actual.Imagen.ImagenUrl);
+            Articulo articulo_actual = (Articulo)DgwListaArticulos.CurrentRow.DataBoundItem;
+            if(articulo_actual.Imagenes != null)
+            {
+                cargar_imagen(articulo_actual.Imagenes[0]);
+            }
+            
         }
-
         private void eliminar_repetidos()
         {
             List<Articulo> repetidos = new List<Articulo>();
             repetidos = get_repetidos();
-            foreach(Articulo repetido in repetidos)
+            foreach (Articulo repetido in repetidos)
             {
                 listaArticulos.Remove(repetido);
             }
         }
-
         private void agrupar_imagenes()
         {
             List<Articulo> repetidos = new List<Articulo>();
@@ -245,7 +240,7 @@ namespace TPWinForm_equipo_18
                 {
                     if (repetido.ID == articulo.ID)
                     {
-                        articulo.Imagenes.Add(repetido.Imagen.ImagenUrl);
+                        articulo.Imagenes.Add(repetido.Imagenes[0]);
                     }
                 }
             }
@@ -271,32 +266,30 @@ namespace TPWinForm_equipo_18
             {
                 pictureBox1.Load(url_imagen);
             }
-            catch (Exception )
+            catch (Exception)
             {
 
                 pictureBox1.Load("https://www.coalitionrc.com/wp-content/uploads/2017/01/placeholder.jpg");
             }
         }
-
         private int cont_imagen = 0;
         private void BtnCambiarImagen_Click(object sender, EventArgs e)
         {
-            try
-            {
+          try
+          {
                 cont_imagen++;
                 Articulo articulo_actual = (Articulo)DgwListaArticulos.CurrentRow.DataBoundItem;
                 cargar_imagen(articulo_actual.Imagenes[cont_imagen]);
-                
-            }
-            catch (Exception )
-            {
+
+          }
+          catch (Exception)
+          {
                 cont_imagen = 0;
                 Articulo articulo_actual = (Articulo)DgwListaArticulos.CurrentRow.DataBoundItem;
-                cargar_imagen(articulo_actual.Imagenes[0]);    
-            }
-            
-        }
+                cargar_imagen(articulo_actual.Imagenes[0]);
+          }
 
+        }
         private void BtnImagenanterior_Click(object sender, EventArgs e)
         {
             try
