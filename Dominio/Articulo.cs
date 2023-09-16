@@ -21,5 +21,7 @@ namespace dominio
         public Imagen Imagen { get; set; }
 
         public List<String> Imagenes;
+
+        public int id_a_incrementar { get; set; }   
     }
 }

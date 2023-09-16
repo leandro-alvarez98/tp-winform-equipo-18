@@ -99,9 +99,19 @@ namespace negocio
         public void agregar(Articulo nuevo_articulo)
         {
             AccesoDatos datos = new AccesoDatos();
+            List<Articulo> lista = listar();
+
+            Articulo articulo_aux = new Articulo();
+
+
+           articulo_aux = lista.Last();
+            
+
+            nuevo_articulo.id_a_incrementar = articulo_aux.ID + 1;
+
             try
             {
-                datos.setConsulta("INSERT INTO ARTICULOS ( Codigo, Nombre, IdMarca, IdCategoria, Precio, Descripcion) VALUES (@id,@Codigo, @Nombre, @Marca, @Categoria, @Precio, @Descripcion) INSERT INTO IMAGENES (IdArticulo, ImagenUrl) VALUES (@IdArticulo, @ImagenUrl)");
+                datos.setConsulta("INSERT INTO ARTICULOS ( Codigo, Nombre, IdMarca, IdCategoria, Precio, Descripcion) VALUES (@Codigo, @Nombre, @Marca, @Categoria, @Precio, @Descripcion) INSERT INTO IMAGENES (IdArticulo, ImagenUrl) VALUES (@IdArticulo, @ImagenUrl)");
                 datos.setParametro("@Codigo", nuevo_articulo.Codigo);
                 datos.setParametro("@Nombre", nuevo_articulo.Nombre);
                 datos.setParametro("@Marca", nuevo_articulo.Marca.Id);
@@ -111,12 +121,12 @@ namespace negocio
 
                 if(nuevo_articulo.Imagenes.Count > 0)
                 {
-                    datos.setParametro("@IdArticulo", nuevo_articulo.ID);
+                    datos.setParametro("@IdArticulo", nuevo_articulo.id_a_incrementar);
                     datos.setParametro("@ImagenUrl", nuevo_articulo.Imagenes[0]);
                 }
                 else
                 {
-                    datos.setParametro("@IdArticulo", nuevo_articulo.ID);
+                    datos.setParametro("@IdArticulo", nuevo_articulo.id_a_incrementar);
                     datos.setParametro("@ImagenUrl", "Sin imagen");
                 }
                 datos.ejecutarAccion();
