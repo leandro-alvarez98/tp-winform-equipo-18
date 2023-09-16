@@ -94,12 +94,14 @@ namespace negocio
                 datos.cerrarConexion();
             }
         }
+
+
         public void agregar(Articulo nuevo_articulo)
         {
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setConsulta("INSERT INTO ARTICULOS (Codigo, Nombre, IdMarca, IdCategoria, Precio, Descripcion) VALUES (@Codigo, @Nombre, @Marca, @Categoria, @Precio, @Descripcion) INSERT INTO IMAGENES (IdArticulo, ImagenUrl) VALUES (@IdArticulo, @ImagenUrl)");
+                datos.setConsulta("INSERT INTO ARTICULOS ( Codigo, Nombre, IdMarca, IdCategoria, Precio, Descripcion) VALUES (@id,@Codigo, @Nombre, @Marca, @Categoria, @Precio, @Descripcion) INSERT INTO IMAGENES (IdArticulo, ImagenUrl) VALUES (@IdArticulo, @ImagenUrl)");
                 datos.setParametro("@Codigo", nuevo_articulo.Codigo);
                 datos.setParametro("@Nombre", nuevo_articulo.Nombre);
                 datos.setParametro("@Marca", nuevo_articulo.Marca.Id);

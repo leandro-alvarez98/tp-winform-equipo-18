@@ -55,7 +55,7 @@ namespace TPWinForm_equipo_18
         }
         private void ocultar_Columnas()
         {
-            DgwListaArticulos.Columns["ID"].Visible = false;
+           // DgwListaArticulos.Columns["ID"].Visible = false;
             DgwListaArticulos.Columns["IMAGEN"].Visible = false;
             return;
         }
@@ -212,7 +212,7 @@ namespace TPWinForm_equipo_18
                     Articulo articulo_actual = (Articulo)DgwListaArticulos.CurrentRow.DataBoundItem;
                     if(articulo_actual.Imagenes != null)
                         cargar_imagen(articulo_actual.Imagenes[0]);
-                    else
+                    else 
                         cargar_predeterminada();
                 }
             }
@@ -312,5 +312,7 @@ namespace TPWinForm_equipo_18
 
             }
         }
+
+       
     }
 }

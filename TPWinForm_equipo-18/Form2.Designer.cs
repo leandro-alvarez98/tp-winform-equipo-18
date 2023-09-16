@@ -45,6 +45,7 @@
             this.TxtPrecio = new System.Windows.Forms.TextBox();
             this.txtbxUrlImagen = new System.Windows.Forms.TextBox();
             this.lblUrlImagen = new System.Windows.Forms.Label();
+            this.BtnCargarImagen = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.PbxImagen)).BeginInit();
             this.SuspendLayout();
             // 
@@ -60,7 +61,7 @@
             // LblNombre
             // 
             this.LblNombre.AutoSize = true;
-            this.LblNombre.Location = new System.Drawing.Point(22, 74);
+            this.LblNombre.Location = new System.Drawing.Point(22, 71);
             this.LblNombre.Name = "LblNombre";
             this.LblNombre.Size = new System.Drawing.Size(44, 13);
             this.LblNombre.TabIndex = 1;
@@ -78,7 +79,7 @@
             // LblMarca
             // 
             this.LblMarca.AutoSize = true;
-            this.LblMarca.Location = new System.Drawing.Point(22, 126);
+            this.LblMarca.Location = new System.Drawing.Point(22, 121);
             this.LblMarca.Name = "LblMarca";
             this.LblMarca.Size = new System.Drawing.Size(37, 13);
             this.LblMarca.TabIndex = 3;
@@ -119,7 +120,7 @@
             // 
             // TxtNombre
             // 
-            this.TxtNombre.Location = new System.Drawing.Point(106, 67);
+            this.TxtNombre.Location = new System.Drawing.Point(106, 71);
             this.TxtNombre.Name = "TxtNombre";
             this.TxtNombre.Size = new System.Drawing.Size(197, 20);
             this.TxtNombre.TabIndex = 1;
@@ -187,7 +188,7 @@
             // 
             this.txtbxUrlImagen.Location = new System.Drawing.Point(106, 265);
             this.txtbxUrlImagen.Name = "txtbxUrlImagen";
-            this.txtbxUrlImagen.Size = new System.Drawing.Size(197, 20);
+            this.txtbxUrlImagen.Size = new System.Drawing.Size(159, 20);
             this.txtbxUrlImagen.TabIndex = 5;
             this.txtbxUrlImagen.Leave += new System.EventHandler(this.txtbxUrlImagen_Leave);
             // 
@@ -200,12 +201,23 @@
             this.lblUrlImagen.TabIndex = 15;
             this.lblUrlImagen.Text = "UrlImagen";
             // 
+            // BtnCargarImagen
+            // 
+            this.BtnCargarImagen.Location = new System.Drawing.Point(278, 265);
+            this.BtnCargarImagen.Name = "BtnCargarImagen";
+            this.BtnCargarImagen.Size = new System.Drawing.Size(25, 20);
+            this.BtnCargarImagen.TabIndex = 16;
+            this.BtnCargarImagen.Text = "+";
+            this.BtnCargarImagen.UseVisualStyleBackColor = true;
+            this.BtnCargarImagen.Click += new System.EventHandler(this.BtnCargarImagen_Click);
+            // 
             // VentanaAñadirArticulo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(240)))), ((int)(((byte)(229)))));
             this.ClientSize = new System.Drawing.Size(654, 601);
+            this.Controls.Add(this.BtnCargarImagen);
             this.Controls.Add(this.txtbxUrlImagen);
             this.Controls.Add(this.lblUrlImagen);
             this.Controls.Add(this.TxtPrecio);
@@ -253,5 +265,6 @@
         private System.Windows.Forms.TextBox TxtPrecio;
         private System.Windows.Forms.TextBox txtbxUrlImagen;
         private System.Windows.Forms.Label lblUrlImagen;
+        private System.Windows.Forms.Button BtnCargarImagen;
     }
 }

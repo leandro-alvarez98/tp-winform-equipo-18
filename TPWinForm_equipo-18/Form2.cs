@@ -3,25 +3,28 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using dominio;
 using negocio;
+using System.Configuration;
 
 namespace TPWinForm_equipo_18
 {
     public partial class VentanaAñadirArticulo : Form
     {
         private Articulo articulo = null;
+        private OpenFileDialog archivo = null;
 
         public VentanaAñadirArticulo()
         {
             InitializeComponent();
         }
 
-        public VentanaAñadirArticulo (Articulo articulo)
+        public VentanaAñadirArticulo(Articulo articulo)
         {
             InitializeComponent();
             this.articulo = articulo;
@@ -39,22 +42,23 @@ namespace TPWinForm_equipo_18
 
             try
             {
-                if(articulo == null)
+                if (articulo == null)
                     articulo = new Articulo();
-                if(articulo.Imagenes == null)
-                    articulo.Imagenes = new List<string> ();
-                if(TxtCodigo.Text != null)
+                if (articulo.Imagenes == null)
+                    articulo.Imagenes = new List<string>();
+                if (TxtCodigo.Text != null)
                     articulo.Codigo = TxtCodigo.Text;
-                if(TxtNombre.Text != null)
+                if (TxtNombre.Text != null)
                     articulo.Nombre = TxtNombre.Text;
-                if(TxtDescripcion.Text != null)
+                if (TxtDescripcion.Text != null)
                     articulo.Descripcion = TxtDescripcion.Text;
                 articulo.Categoria = (Categoria)CbxCategoria.SelectedItem;
                 articulo.Marca = (Marca)CbxMarca.SelectedItem;
-                if(TxtPrecio.Text != null)
+                if (TxtPrecio.Text != null)
                     articulo.Precio = decimal.Parse(TxtPrecio.Text);
-
+                if(txtbxUrlImagen != null)
                 articulo.Imagenes.Add(txtbxUrlImagen.Text);
+                
 
                 if (articulo.ID != 0)
                 {
@@ -65,6 +69,12 @@ namespace TPWinForm_equipo_18
                 {
                     negocio.agregar(articulo);
                     MessageBox.Show("Articulo añadido correctamente!");
+                }
+               
+                //distingue si las guarda en la base de datos o localmente
+                if (archivo != null && !(txtbxUrlImagen.Text.ToUpper().Contains("HTTP")))
+                {                 
+                    copiar_imagen_localmente();
                 }
 
                 Close();
@@ -88,10 +98,11 @@ namespace TPWinForm_equipo_18
                 CbxCategoria.DataSource = categoriaNegocio.listar();
                 CbxCategoria.ValueMember = "Id";
                 CbxCategoria.DisplayMember = "Descripcion";
+                cargar_predeterminada();
 
-                if(articulo != null)
+                if (articulo != null)
                 {
-                    TxtCodigo.Text = articulo.Codigo;  
+                    TxtCodigo.Text = articulo.Codigo;
                     TxtNombre.Text = articulo.Nombre;
                     TxtPrecio.Text = articulo.Precio.ToString();
                     CbxMarca.SelectedValue = articulo.Marca.Id;
@@ -118,8 +129,40 @@ namespace TPWinForm_equipo_18
             }
             catch (Exception)
             {
-                PbxImagen.Load("https://www.coalitionrc.com/wp-content/uploads/2017/01/placeholder.jpg");
+                cargar_predeterminada();
             }
         }
+
+        private void cargar_predeterminada()
+        {
+            PbxImagen.Load("https://www.coalitionrc.com/wp-content/uploads/2017/01/placeholder.jpg");
+        }
+
+        private void copiar_imagen_localmente()
+        {
+            try
+            {
+                //copia la imagen a una carpeta local
+                 File.Copy(archivo.FileName, ConfigurationManager.AppSettings["Imagenes-app"] + archivo.SafeFileName);
+            }
+            catch (System.IO.IOException )
+            {
+                MessageBox.Show("ya hay un achivo con la misma imagen, elija otra por favor :)");
+                throw;
+            }
+        }
+
+        private void BtnCargarImagen_Click(object sender, EventArgs e)
+        {
+            archivo = new OpenFileDialog();
+            archivo.Filter = "jpg|*.jpg;|png|*.png";
+            if (archivo.ShowDialog() == DialogResult.OK)
+            {
+                txtbxUrlImagen.Text = archivo.FileName;
+                cargar_imagen(archivo.FileName);
+
+            }
+        } 
     }
 }
+
