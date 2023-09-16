@@ -64,7 +64,7 @@
             this.BtnCambiarImagen.Location = new System.Drawing.Point(1034, 389);
             this.BtnCambiarImagen.Name = "BtnCambiarImagen";
             this.BtnCambiarImagen.Size = new System.Drawing.Size(99, 25);
-            this.BtnCambiarImagen.TabIndex = 2;
+            this.BtnCambiarImagen.TabIndex = 7;
             this.BtnCambiarImagen.Text = "Siguiente imagen";
             this.BtnCambiarImagen.UseVisualStyleBackColor = true;
             this.BtnCambiarImagen.Click += new System.EventHandler(this.BtnCambiarImagen_Click);
@@ -91,7 +91,7 @@
             this.CbxCampo.Location = new System.Drawing.Point(794, 95);
             this.CbxCampo.Name = "CbxCampo";
             this.CbxCampo.Size = new System.Drawing.Size(121, 23);
-            this.CbxCampo.TabIndex = 3;
+            this.CbxCampo.TabIndex = 2;
             this.CbxCampo.SelectedIndexChanged += new System.EventHandler(this.CbxCampo_SelectedIndexChanged);
             // 
             // LblCampo
@@ -102,7 +102,7 @@
             this.LblCampo.Location = new System.Drawing.Point(726, 93);
             this.LblCampo.Name = "LblCampo";
             this.LblCampo.Size = new System.Drawing.Size(62, 20);
-            this.LblCampo.TabIndex = 8;
+            this.LblCampo.TabIndex = 9;
             this.LblCampo.Text = "Campo";
             // 
             // LblCriterio
@@ -125,7 +125,7 @@
             this.CbxCriterio.Location = new System.Drawing.Point(794, 126);
             this.CbxCriterio.Name = "CbxCriterio";
             this.CbxCriterio.Size = new System.Drawing.Size(121, 23);
-            this.CbxCriterio.TabIndex = 4;
+            this.CbxCriterio.TabIndex = 3;
             // 
             // ImgLmagenes
             // 
@@ -140,7 +140,7 @@
             this.label1.Location = new System.Drawing.Point(282, 538);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(0, 15);
-            this.label1.TabIndex = 15;
+            this.label1.TabIndex = 11;
             // 
             // Header
             // 
@@ -151,7 +151,7 @@
             this.Header.Location = new System.Drawing.Point(0, 0);
             this.Header.Name = "Header";
             this.Header.Size = new System.Drawing.Size(1145, 66);
-            this.Header.TabIndex = 16;
+            this.Header.TabIndex = 0;
             // 
             // lblTitulo
             // 
@@ -208,7 +208,7 @@
             this.sideBar.Name = "sideBar";
             this.sideBar.Padding = new System.Windows.Forms.Padding(0, 25, 0, 0);
             this.sideBar.Size = new System.Drawing.Size(186, 553);
-            this.sideBar.TabIndex = 17;
+            this.sideBar.TabIndex = 1;
             // 
             // BtnModificar
             // 
@@ -272,7 +272,7 @@
             this.btnBuscar.Location = new System.Drawing.Point(1022, 122);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(75, 23);
-            this.btnBuscar.TabIndex = 21;
+            this.btnBuscar.TabIndex = 5;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
@@ -293,7 +293,7 @@
             this.txtFiltroAvanzado.Location = new System.Drawing.Point(995, 96);
             this.txtFiltroAvanzado.Name = "txtFiltroAvanzado";
             this.txtFiltroAvanzado.Size = new System.Drawing.Size(138, 21);
-            this.txtFiltroAvanzado.TabIndex = 5;
+            this.txtFiltroAvanzado.TabIndex = 4;
             // 
             // pictureBox1
             // 
@@ -309,7 +309,7 @@
             this.BtnImagenanterior.Location = new System.Drawing.Point(913, 391);
             this.BtnImagenanterior.Name = "BtnImagenanterior";
             this.BtnImagenanterior.Size = new System.Drawing.Size(92, 23);
-            this.BtnImagenanterior.TabIndex = 1;
+            this.BtnImagenanterior.TabIndex = 6;
             this.BtnImagenanterior.Text = "Anterior";
             this.BtnImagenanterior.UseVisualStyleBackColor = true;
             this.BtnImagenanterior.Click += new System.EventHandler(this.BtnImagenanterior_Click);

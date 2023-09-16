@@ -41,6 +41,8 @@ namespace TPWinForm_equipo_18
             {
                 if(articulo == null)
                     articulo = new Articulo();
+                if(articulo.Imagenes == null)
+                    articulo.Imagenes = new List<string> ();
 
                 articulo.Codigo = TxtCodigo.Text;
                 articulo.Nombre = TxtNombre.Text;
@@ -48,6 +50,7 @@ namespace TPWinForm_equipo_18
                 articulo.Categoria = (Categoria)CbxCategoria.SelectedItem;
                 articulo.Marca = (Marca)CbxMarca.SelectedItem;
                 articulo.Precio = decimal.Parse(TxtPrecio.Text);
+                articulo.Imagenes.Add(txtbxUrlImagen.Text);
 
                 if (articulo.ID != 0)
                 {
@@ -96,6 +99,21 @@ namespace TPWinForm_equipo_18
             {
 
                 MessageBox.Show(ex.ToString());
+            }
+        }
+        private void txtbxUrlImagen_Leave(object sender, EventArgs e)
+        {
+            cargar_imagen(txtbxUrlImagen.Text);
+        }
+        private void cargar_imagen(string url_imagen)
+        {
+            try
+            {
+                PbxImagen.Load(url_imagen);
+            }
+            catch (Exception)
+            {
+                PbxImagen.Load("https://www.coalitionrc.com/wp-content/uploads/2017/01/placeholder.jpg");
             }
         }
     }

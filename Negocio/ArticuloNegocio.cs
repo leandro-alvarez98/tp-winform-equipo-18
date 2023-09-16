@@ -18,17 +18,15 @@ namespace negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setConsulta("SELECT a.Id, a.Codigo, a.Nombre, a.Descripcion, a.IdMarca as marca, a.IdCategoria as categoria, a.Precio,m.Descripcion as mdescripcion,i.ImagenUrl as link, c.Descripcion as cdescripcion FROM ARTICULOS a INNER JOIN MARCAS m ON m.Id = a.IdMarca  INNER JOIN IMAGENES i ON i.IdArticulo = a.Id  left JOIN CATEGORIAS c ON c.Id = a.IdCategoria");
+                datos.setConsulta("SELECT a.Id, a.Codigo, a.Nombre, a.Descripcion, a.IdMarca as marca, a.IdCategoria as categoria, a.Precio,m.Descripcion as mdescripcion,i.ImagenUrl as link,c.Descripcion as cdescripcion FROM ARTICULOS a LEFT JOIN MARCAS m ON m.Id = a.IdMarca LEFT JOIN IMAGENES i ON i.IdArticulo = a.Id LEFT JOIN CATEGORIAS c ON c.Id = a.IdCategoria");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
                 {
                     Articulo objetoArticulo = new Articulo();
 
-                    if (!(datos.Lector["id"]is DBNull))
-                    {
-                      objetoArticulo.ID = (int)datos.Lector["Id"];
-                    }
+                    objetoArticulo.ID = (int)datos.Lector["Id"];
+
                     if (!(datos.Lector["Codigo"] is DBNull))
                     {
                         objetoArticulo.Codigo = (string)datos.Lector["Codigo"];
@@ -37,21 +35,12 @@ namespace negocio
                     {
                         objetoArticulo.Nombre = (string)datos.Lector["Nombre"];
                     }
-                    else
-                    {
-                        objetoArticulo.Nombre = "-";
-                    }
                     if (!(datos.Lector["Descripcion"] is DBNull))
                     {
                         objetoArticulo.Descripcion = (string)datos.Lector["Descripcion"];
                     }
-                    else
-                    {
-                        objetoArticulo.Descripcion = "-";
-                    }
 
                     objetoArticulo.Marca = new Marca();
-
                     if (!(datos.Lector["marca"] is DBNull))
                     {
                         objetoArticulo.Marca.Id = (int)datos.Lector["marca"];
@@ -59,7 +48,6 @@ namespace negocio
                     }
 
                     objetoArticulo.Categoria = new Categoria();
-
                     if (!(datos.Lector["categoria"] is DBNull))
                     {
                         objetoArticulo.Categoria.Id = (int)datos.Lector["categoria"];
@@ -76,11 +64,8 @@ namespace negocio
                         objetoArticulo.Precio = (decimal)datos.Lector["Precio"];
                     
                     objetoArticulo.Imagenes = new List<String>();
-
                     if (!(datos.Lector["link"] is DBNull))
                         objetoArticulo.Imagenes.Add((string)datos.Lector["link"]);
-                    else
-                        objetoArticulo.Imagenes.Add("--");
 
                     lista.Add(objetoArticulo);
                 }
@@ -108,8 +93,17 @@ namespace negocio
                 datos.setParametro("@Categoria", nuevo_articulo.Categoria.Id);
                 datos.setParametro("@Precio", nuevo_articulo.Precio);
                 datos.setParametro("@Descripcion", nuevo_articulo.Descripcion);
-                datos.setParametro("@IdArticulo", nuevo_articulo.ID);
-                datos.setParametro("@ImagenUrl", nuevo_articulo.Imagenes[0]);
+
+                if(nuevo_articulo.Imagenes.Count > 0)
+                {
+                    datos.setParametro("@IdArticulo", nuevo_articulo.ID);
+                    datos.setParametro("@ImagenUrl", nuevo_articulo.Imagenes[0]);
+                }
+                else
+                {
+                    datos.setParametro("@IdArticulo", nuevo_articulo.ID);
+                    datos.setParametro("@ImagenUrl", "Sin imagen");
+                }
                 datos.ejecutarAccion();
             }
             catch (Exception ex)

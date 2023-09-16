@@ -147,7 +147,8 @@ namespace TPWinForm_equipo_18
             }
             return false;
         }
-        private bool soloNumeros(string cadena) {
+        private bool soloNumeros(string cadena) 
+        {
             foreach (char caracter in cadena)
             {
                 if (!(char.IsNumber(caracter)))
@@ -178,21 +179,6 @@ namespace TPWinForm_equipo_18
 
                 MessageBox.Show(ex.ToString());
             }
-
-
-            //ES EL FILTRO ANTERIOR
-            /*List<Articulo> listaFiltrada;
-            if(TxtBuscar.Text != "")
-            {
-                listaFiltrada = listaArticulos.FindAll(articulo => articulo.Nombre.ToLower().Contains(TxtBuscar.Text.ToLower()) || articulo.Marca.Descripcion.ToLower().Contains(TxtBuscar.Text.ToLower()) || articulo.Categoria.Descripcion.ToLower().Contains(TxtBuscar.Text.ToLower()));
-            }
-            else
-            {
-                listaFiltrada = listaArticulos;
-            }
-            DgwListaArticulos.DataSource = null;
-            DgwListaArticulos.DataSource = listaFiltrada;
-            ocultar_Columnas();*/
         }
         private void CbxCampo_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -214,12 +200,18 @@ namespace TPWinForm_equipo_18
         }
         private void DgwListaArticulos_SelectionChanged(object sender, EventArgs e)
         {
-            Articulo articulo_actual = (Articulo)DgwListaArticulos.CurrentRow.DataBoundItem;
-            if(articulo_actual.Imagenes != null)
+            try
             {
-                cargar_imagen(articulo_actual.Imagenes[0]);
+                if (DgwListaArticulos.CurrentRow != null)
+                {
+                    Articulo articulo_actual = (Articulo)DgwListaArticulos.CurrentRow.DataBoundItem;
+                    cargar_imagen(articulo_actual.Imagenes[0]);
+                }
             }
-            
+            catch (Exception)
+            {
+                cargar_predeterminada();
+            }
         }
         private void eliminar_repetidos()
         {
@@ -260,18 +252,22 @@ namespace TPWinForm_equipo_18
             }
             return repetidos;
         }
-        private void cargar_imagen(string url_imagen)
+        private void cargar_imagen(string url)
         {
             try
             {
-                pictureBox1.Load(url_imagen);
+                pictureBox1.Load(url);
             }
             catch (Exception)
             {
-
-                pictureBox1.Load("https://www.coalitionrc.com/wp-content/uploads/2017/01/placeholder.jpg");
+                cargar_predeterminada();
             }
         }
+        private void cargar_predeterminada()
+        {
+            pictureBox1.Load("https://www.coalitionrc.com/wp-content/uploads/2017/01/placeholder.jpg");
+        }
+        
         private int cont_imagen = 0;
         private void BtnCambiarImagen_Click(object sender, EventArgs e)
         {
@@ -286,7 +282,7 @@ namespace TPWinForm_equipo_18
           {
                 cont_imagen = 0;
                 Articulo articulo_actual = (Articulo)DgwListaArticulos.CurrentRow.DataBoundItem;
-                cargar_imagen(articulo_actual.Imagenes[0]);
+                cargar_imagen(articulo_actual.Imagenes[cont_imagen]);
           }
 
         }
