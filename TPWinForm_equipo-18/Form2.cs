@@ -43,13 +43,17 @@ namespace TPWinForm_equipo_18
                     articulo = new Articulo();
                 if(articulo.Imagenes == null)
                     articulo.Imagenes = new List<string> ();
-
-                articulo.Codigo = TxtCodigo.Text;
-                articulo.Nombre = TxtNombre.Text;
-                articulo.Descripcion = TxtDescripcion.Text;
+                if(TxtCodigo.Text != null)
+                    articulo.Codigo = TxtCodigo.Text;
+                if(TxtNombre.Text != null)
+                    articulo.Nombre = TxtNombre.Text;
+                if(TxtDescripcion.Text != null)
+                    articulo.Descripcion = TxtDescripcion.Text;
                 articulo.Categoria = (Categoria)CbxCategoria.SelectedItem;
                 articulo.Marca = (Marca)CbxMarca.SelectedItem;
-                articulo.Precio = decimal.Parse(TxtPrecio.Text);
+                if(TxtPrecio.Text != null)
+                    articulo.Precio = decimal.Parse(TxtPrecio.Text);
+
                 articulo.Imagenes.Add(txtbxUrlImagen.Text);
 
                 if (articulo.ID != 0)
@@ -92,7 +96,8 @@ namespace TPWinForm_equipo_18
                     TxtPrecio.Text = articulo.Precio.ToString();
                     CbxMarca.SelectedValue = articulo.Marca.Id;
                     CbxCategoria.SelectedValue = articulo.Categoria.Id;
-                    
+                    txtbxUrlImagen.Text = articulo.Imagen.ToString();
+                    cargar_imagen(txtbxUrlImagen.Text);
                 }
             }
             catch (Exception ex)

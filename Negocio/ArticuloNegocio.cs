@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
 using dominio;
+using static System.Windows.Forms.LinkLabel;
 
 namespace negocio
 {
@@ -24,7 +26,7 @@ namespace negocio
                 while (datos.Lector.Read())
                 {
                     Articulo objetoArticulo = new Articulo();
-
+                    
                     objetoArticulo.ID = (int)datos.Lector["Id"];
 
                     if (!(datos.Lector["Codigo"] is DBNull))
@@ -62,10 +64,21 @@ namespace negocio
 
                     if (!(datos.Lector["Precio"] is DBNull))
                         objetoArticulo.Precio = (decimal)datos.Lector["Precio"];
-                    
+
+
                     objetoArticulo.Imagenes = new List<String>();
+
+                    objetoArticulo.Imagen = new Imagen();
+
                     if (!(datos.Lector["link"] is DBNull))
+                    {
+                        objetoArticulo.Imagen.ImagenUrl = (string)datos.Lector["link"];
                         objetoArticulo.Imagenes.Add((string)datos.Lector["link"]);
+                    }
+                    else
+                    {
+                        objetoArticulo.Imagenes.Add("Sin imagen");
+                    }
 
                     lista.Add(objetoArticulo);
                 }
@@ -119,7 +132,6 @@ namespace negocio
         public void Modificar (Articulo articulo) 
         {
             AccesoDatos datos = new AccesoDatos (); 
-
             try
             {
                 datos.setConsulta("UPDATE ARTICULOS set Codigo = @codigo, Nombre = @nombre, Descripcion = @descripcion,idMarca = @marca,idCategoria = @categoria ,Precio = @precio where id = @id");
@@ -165,11 +177,9 @@ namespace negocio
         {
             List<Articulo> lista = new List<Articulo>();
             AccesoDatos datos = new AccesoDatos();
-
             try
-            { 
-                string consulta = "SELECT a.Id, a.Codigo, a.Nombre, a.Descripcion, m.Id as marca, m.Descripcion as mdescripcion, c.Id as categoria, c.Descripcion as cdescripcion, a.Precio FROM ARTICULOS a INNER JOIN MARCAS m ON m.Id = a.IdMarca INNER JOIN CATEGORIAS c ON c.Id = a.IdCategoria And ";
-                
+            {
+                string consulta = "SELECT a.Id, a.Codigo, a.Nombre, a.Descripcion, a.IdMarca as marca, a.IdCategoria as categoria, a.Precio,m.Descripcion as mdescripcion,i.ImagenUrl as link,c.Descripcion as cdescripcion FROM ARTICULOS a LEFT JOIN MARCAS m ON m.Id = a.IdMarca LEFT JOIN IMAGENES i ON i.IdArticulo = a.Id LEFT JOIN CATEGORIAS c ON c.Id = a.IdCategoria WHERE ";
                 switch (campo) {
 
                     case "ID":
@@ -221,6 +231,7 @@ namespace negocio
                         break;
                 }
 
+
                 datos.setConsulta(consulta);
 
                 datos.ejecutarLectura();
@@ -230,21 +241,53 @@ namespace negocio
                     Articulo objetoArticulo = new Articulo();
 
                     objetoArticulo.ID = (int)datos.Lector["Id"];
-                    objetoArticulo.Codigo = (string)datos.Lector["Codigo"];
-                    objetoArticulo.Nombre = (string)datos.Lector["Nombre"];
-                    objetoArticulo.Descripcion = (string)datos.Lector["Descripcion"];
+
+                    if (!(datos.Lector["Codigo"] is DBNull))
+                    {
+                        objetoArticulo.Codigo = (string)datos.Lector["Codigo"];
+                    }
+                    if (!(datos.Lector["Nombre"] is DBNull))
+                    {
+                        objetoArticulo.Nombre = (string)datos.Lector["Nombre"];
+                    }
+                    if (!(datos.Lector["Descripcion"] is DBNull))
+                    {
+                        objetoArticulo.Descripcion = (string)datos.Lector["Descripcion"];
+                    }
 
                     objetoArticulo.Marca = new Marca();
-
-                    objetoArticulo.Marca.Id = (int)datos.Lector["marca"];
-                    objetoArticulo.Marca.Descripcion = (string)datos.Lector["mdescripcion"];
+                    if (!(datos.Lector["marca"] is DBNull))
+                    {
+                        objetoArticulo.Marca.Id = (int)datos.Lector["marca"];
+                        objetoArticulo.Marca.Descripcion = (string)datos.Lector["mdescripcion"];
+                    }
 
                     objetoArticulo.Categoria = new Categoria();
+                    if (!(datos.Lector["categoria"] is DBNull))
+                    {
+                        objetoArticulo.Categoria.Id = (int)datos.Lector["categoria"];
+                    }
+                    if (!(datos.Lector["cdescripcion"] is DBNull))
+                    {
+                        objetoArticulo.Categoria.Descripcion = (string)datos.Lector["cdescripcion"];
+                    }
+                    else
+                    {
+                        objetoArticulo.Categoria.Descripcion = "-";
+                    }
 
-                    objetoArticulo.Categoria.Id = (int)datos.Lector["categoria"];
-                    objetoArticulo.Categoria.Descripcion = (string)datos.Lector["cdescripcion"];
+                    if (!(datos.Lector["Precio"] is DBNull))
+                        objetoArticulo.Precio = (decimal)datos.Lector["Precio"];
 
-                    objetoArticulo.Precio = (decimal)datos.Lector["Precio"];
+                    objetoArticulo.Imagenes = new List<String>();
+                    if (!(datos.Lector["link"] is DBNull))
+                    {
+                        objetoArticulo.Imagenes.Add((string)datos.Lector["link"]);
+                    }
+                    else
+                    {
+                        objetoArticulo.Imagenes.Add("Sin imagen");
+                    }
 
                     lista.Add(objetoArticulo);
                 }

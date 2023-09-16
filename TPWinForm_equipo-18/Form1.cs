@@ -16,9 +16,7 @@ namespace TPWinForm_equipo_18
     public partial class Ventana : Form
     {
         private List<Articulo> listaArticulos;
-
         bool sideBarExpand = true;
-
         public Ventana()
         {
             InitializeComponent();
@@ -37,9 +35,9 @@ namespace TPWinForm_equipo_18
             {
                 listaArticulos = negocio.listar();
 
-                agrupar_imagenes();
+                agrupar_imagenes(listaArticulos);
 
-                eliminar_repetidos();
+                eliminar_repetidos(listaArticulos);
                 
                 DgwListaArticulos.DataSource = listaArticulos;
 
@@ -161,17 +159,24 @@ namespace TPWinForm_equipo_18
             ArticuloNegocio negocio = new ArticuloNegocio();
             try
             {
-                if (validarFiltro()) {
+                if (validarFiltro()) 
+                {
                     return;
                 }
                 string campo = CbxCampo.SelectedItem.ToString();
                 string criterio = CbxCriterio.SelectedItem.ToString();
                 string filtro = txtFiltroAvanzado.Text;
-                DgwListaArticulos.DataSource = negocio.filtrar(campo, criterio, filtro);
 
-                if(DgwListaArticulos.CurrentRow == null)
+                List<Articulo> lista_filtrada = new List<Articulo>();
+                lista_filtrada = negocio.filtrar(campo, criterio, filtro);
+                agrupar_imagenes(lista_filtrada);
+                eliminar_repetidos(lista_filtrada);
+                DgwListaArticulos.DataSource = lista_filtrada;
+
+                if (DgwListaArticulos.CurrentRow == null)
                 {
                     BtnCambiarImagen.Enabled = false;
+                    BtnImagenanterior.Enabled = false;
                 }
             }
             catch (Exception ex)
@@ -205,7 +210,10 @@ namespace TPWinForm_equipo_18
                 if (DgwListaArticulos.CurrentRow != null)
                 {
                     Articulo articulo_actual = (Articulo)DgwListaArticulos.CurrentRow.DataBoundItem;
-                    cargar_imagen(articulo_actual.Imagenes[0]);
+                    if(articulo_actual.Imagenes != null)
+                        cargar_imagen(articulo_actual.Imagenes[0]);
+                    else
+                        cargar_predeterminada();
                 }
             }
             catch (Exception)
@@ -213,20 +221,20 @@ namespace TPWinForm_equipo_18
                 cargar_predeterminada();
             }
         }
-        private void eliminar_repetidos()
+        private void eliminar_repetidos(List<Articulo> lista)
         {
             List<Articulo> repetidos = new List<Articulo>();
-            repetidos = get_repetidos();
+            repetidos = get_repetidos(lista);
             foreach (Articulo repetido in repetidos)
             {
-                listaArticulos.Remove(repetido);
+                lista.Remove(repetido);
             }
         }
-        private void agrupar_imagenes()
+        private void agrupar_imagenes(List<Articulo> lista)
         {
             List<Articulo> repetidos = new List<Articulo>();
-            repetidos = get_repetidos();
-            foreach (Articulo articulo in listaArticulos)
+            repetidos = get_repetidos(lista);
+            foreach (Articulo articulo in lista)
             {
                 foreach (Articulo repetido in repetidos)
                 {
@@ -237,13 +245,13 @@ namespace TPWinForm_equipo_18
                 }
             }
         }
-        private List<Articulo> get_repetidos()
+        private List<Articulo> get_repetidos(List<Articulo> lista)
         {
             HashSet<int> ids_revisados = new HashSet<int>();
 
             List<Articulo> repetidos = new List<Articulo>();
 
-            foreach (Articulo articulo_actual in listaArticulos)
+            foreach (Articulo articulo_actual in lista)
             {
                 if (!ids_revisados.Add(articulo_actual.ID))
                 {
