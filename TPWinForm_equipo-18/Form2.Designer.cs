@@ -46,6 +46,7 @@
             this.txtbxUrlImagen = new System.Windows.Forms.TextBox();
             this.lblUrlImagen = new System.Windows.Forms.Label();
             this.BtnCargarImagen = new System.Windows.Forms.Button();
+            this.Lbl_error_precio = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.PbxImagen)).BeginInit();
             this.SuspendLayout();
             // 
@@ -106,6 +107,7 @@
             // TxtCodigo
             // 
             this.TxtCodigo.Location = new System.Drawing.Point(106, 24);
+            this.TxtCodigo.MaxLength = 50;
             this.TxtCodigo.Name = "TxtCodigo";
             this.TxtCodigo.Size = new System.Drawing.Size(197, 20);
             this.TxtCodigo.TabIndex = 0;
@@ -113,6 +115,7 @@
             // TxtDescripcion
             // 
             this.TxtDescripcion.Location = new System.Drawing.Point(25, 343);
+            this.TxtDescripcion.MaxLength = 150;
             this.TxtDescripcion.Multiline = true;
             this.TxtDescripcion.Name = "TxtDescripcion";
             this.TxtDescripcion.Size = new System.Drawing.Size(360, 130);
@@ -121,6 +124,7 @@
             // TxtNombre
             // 
             this.TxtNombre.Location = new System.Drawing.Point(106, 71);
+            this.TxtNombre.MaxLength = 50;
             this.TxtNombre.Name = "TxtNombre";
             this.TxtNombre.Size = new System.Drawing.Size(197, 20);
             this.TxtNombre.TabIndex = 1;
@@ -129,7 +133,7 @@
             // 
             this.BtnAgregar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(192)))), ((int)(((byte)(163)))));
             this.BtnAgregar.ForeColor = System.Drawing.Color.Black;
-            this.BtnAgregar.Location = new System.Drawing.Point(25, 492);
+            this.BtnAgregar.Location = new System.Drawing.Point(25, 521);
             this.BtnAgregar.Name = "BtnAgregar";
             this.BtnAgregar.Size = new System.Drawing.Size(98, 35);
             this.BtnAgregar.TabIndex = 7;
@@ -140,7 +144,7 @@
             // BtnCancelar
             // 
             this.BtnCancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(192)))), ((int)(((byte)(163)))));
-            this.BtnCancelar.Location = new System.Drawing.Point(287, 492);
+            this.BtnCancelar.Location = new System.Drawing.Point(287, 521);
             this.BtnCancelar.Name = "BtnCancelar";
             this.BtnCancelar.Size = new System.Drawing.Size(98, 35);
             this.BtnCancelar.TabIndex = 8;
@@ -207,9 +211,20 @@
             this.BtnCargarImagen.Name = "BtnCargarImagen";
             this.BtnCargarImagen.Size = new System.Drawing.Size(25, 20);
             this.BtnCargarImagen.TabIndex = 16;
-            this.BtnCargarImagen.Text = "+";
+            this.BtnCargarImagen.Text = " +";
             this.BtnCargarImagen.UseVisualStyleBackColor = true;
             this.BtnCargarImagen.Click += new System.EventHandler(this.BtnCargarImagen_Click);
+            // 
+            // Lbl_error_precio
+            // 
+            this.Lbl_error_precio.AutoSize = true;
+            this.Lbl_error_precio.ForeColor = System.Drawing.Color.Firebrick;
+            this.Lbl_error_precio.Location = new System.Drawing.Point(115, 238);
+            this.Lbl_error_precio.Name = "Lbl_error_precio";
+            this.Lbl_error_precio.Size = new System.Drawing.Size(70, 13);
+            this.Lbl_error_precio.TabIndex = 18;
+            this.Lbl_error_precio.Text = "mensaje error";
+            this.Lbl_error_precio.Visible = false;
             // 
             // VentanaAñadirArticulo
             // 
@@ -217,6 +232,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(240)))), ((int)(((byte)(229)))));
             this.ClientSize = new System.Drawing.Size(654, 601);
+            this.Controls.Add(this.Lbl_error_precio);
             this.Controls.Add(this.BtnCargarImagen);
             this.Controls.Add(this.txtbxUrlImagen);
             this.Controls.Add(this.lblUrlImagen);
@@ -266,5 +282,6 @@
         private System.Windows.Forms.TextBox txtbxUrlImagen;
         private System.Windows.Forms.Label lblUrlImagen;
         private System.Windows.Forms.Button BtnCargarImagen;
+        private System.Windows.Forms.Label Lbl_error_precio;
     }
 }

@@ -36,9 +36,12 @@ namespace TPWinForm_equipo_18
             this.Close();
         }
 
+
+        //mapea lo que hay en el formulario al objeto al momento de aceptar la modificacion o el agregado  
         private void BtnAgregar_Click(object sender, EventArgs e)
         {
             ArticuloNegocio negocio = new ArticuloNegocio();
+            bool Flag = true;
 
             try
             {
@@ -51,7 +54,7 @@ namespace TPWinForm_equipo_18
                 if (TxtNombre.Text != null)
                     articulo.Nombre = TxtNombre.Text;
                 if (TxtDescripcion.Text != null)
-                    articulo.Descripcion = TxtDescripcion.Text;
+                    articulo.Descripcion = TxtDescripcion.Text;            
                 articulo.Categoria = (Categoria)CbxCategoria.SelectedItem;
                 articulo.Marca = (Marca)CbxMarca.SelectedItem;
                 if (TxtPrecio.Text != null)
@@ -79,13 +82,14 @@ namespace TPWinForm_equipo_18
 
                 Close();
             }
-            catch (Exception ex)
+            catch (FormatException )
             {
-                MessageBox.Show(ex.ToString());
-                throw;
+                Lbl_error_precio.Text = "Por favor, Cargar solo numeros ";  
+                Lbl_error_precio.Visible = true;
             }
-        }
+              
 
+        }
 
         //ventana del segundo formulario al cargar/ modificar
         private void VentanaAñadirArticulo_Load(object sender, EventArgs e)
@@ -120,6 +124,8 @@ namespace TPWinForm_equipo_18
                 MessageBox.Show(ex.ToString());
             }
         }
+
+
         private void txtbxUrlImagen_Leave(object sender, EventArgs e)
         {
             cargar_imagen(txtbxUrlImagen.Text);
