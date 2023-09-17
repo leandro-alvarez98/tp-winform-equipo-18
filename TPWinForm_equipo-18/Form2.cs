@@ -86,6 +86,8 @@ namespace TPWinForm_equipo_18
             }
         }
 
+
+        //ventana del segundo formulario al cargar/ modificar
         private void VentanaAñadirArticulo_Load(object sender, EventArgs e)
         {
             MarcaNegocio marcaNegocio = new MarcaNegocio();
@@ -108,6 +110,7 @@ namespace TPWinForm_equipo_18
                     CbxMarca.SelectedValue = articulo.Marca.Id;
                     CbxCategoria.SelectedValue = articulo.Categoria.Id;
                     txtbxUrlImagen.Text = articulo.Imagen.ToString();
+                    TxtDescripcion.Text = articulo.Descripcion;
                     cargar_imagen(txtbxUrlImagen.Text);
                 }
             }

@@ -17,6 +17,8 @@ namespace TPWinForm_equipo_18
     {
         private List<Articulo> listaArticulos;
         bool sideBarExpand = true;
+
+
         public Ventana()
         {
             InitializeComponent();
