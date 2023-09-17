@@ -297,22 +297,31 @@ namespace TPWinForm_equipo_18
         private void BtnImagenanterior_Click(object sender, EventArgs e)
         {
             try
-            {
-                cont_imagen--;
-                Articulo articulo_actual = (Articulo)DgwListaArticulos.CurrentRow.DataBoundItem;
+            {Articulo articulo_actual = (Articulo)DgwListaArticulos.CurrentRow.DataBoundItem;
 
-                 cargar_imagen(articulo_actual.Imagenes[cont_imagen]);
-                 
+                if (articulo_actual.Imagenes.Count > 0)
+                {
+                    cont_imagen--;
+
+                    if (cont_imagen < 0)
+                    {
+                        cont_imagen = articulo_actual.Imagenes.Count - 1; // Vuelve al último índice si llega a 0
+                    }
+
+                    cargar_imagen(articulo_actual.Imagenes[cont_imagen]);
+                }
             }
             catch (Exception)
             {
                 cont_imagen = 0;
                 Articulo articulo_actual = (Articulo)DgwListaArticulos.CurrentRow.DataBoundItem;
                 cargar_imagen(articulo_actual.Imagenes[cont_imagen]);
+                
 
             }
         }
+        
 
-       
+
     }
 }

@@ -133,7 +133,7 @@
             this.BtnAgregar.Name = "BtnAgregar";
             this.BtnAgregar.Size = new System.Drawing.Size(98, 35);
             this.BtnAgregar.TabIndex = 7;
-            this.BtnAgregar.Text = "Agregar";
+            this.BtnAgregar.Text = "Modificar";
             this.BtnAgregar.UseVisualStyleBackColor = false;
             this.BtnAgregar.Click += new System.EventHandler(this.BtnAgregar_Click);
             // 
