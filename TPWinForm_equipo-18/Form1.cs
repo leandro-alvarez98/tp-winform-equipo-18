@@ -59,6 +59,7 @@ namespace TPWinForm_equipo_18
         {
            // DgwListaArticulos.Columns["ID"].Visible = false;
             DgwListaArticulos.Columns["IMAGEN"].Visible = false;
+            DgwListaArticulos.Columns["id_a_incrementar"].Visible = false;
             return;
         }
         private void Ventana_Load(object sender, EventArgs e)

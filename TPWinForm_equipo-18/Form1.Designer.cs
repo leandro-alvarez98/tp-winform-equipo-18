@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Ventana));
             this.BtnCambiarImagen = new System.Windows.Forms.Button();
             this.DgwListaArticulos = new System.Windows.Forms.DataGridView();
@@ -64,7 +64,8 @@
             // 
             // BtnCambiarImagen
             // 
-            this.BtnCambiarImagen.Location = new System.Drawing.Point(1034, 412);
+            this.BtnCambiarImagen.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnCambiarImagen.Location = new System.Drawing.Point(1108, 412);
             this.BtnCambiarImagen.Name = "BtnCambiarImagen";
             this.BtnCambiarImagen.Size = new System.Drawing.Size(99, 25);
             this.BtnCambiarImagen.TabIndex = 7;
@@ -76,14 +77,14 @@
             // 
             this.DgwListaArticulos.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(140)))), ((int)(((byte)(171)))));
             this.DgwListaArticulos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(55)))), ((int)(((byte)(86)))));
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Century Gothic", 14F);
-            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(111)))), ((int)(((byte)(140)))), ((int)(((byte)(139)))));
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DgwListaArticulos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(55)))), ((int)(((byte)(86)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(111)))), ((int)(((byte)(140)))), ((int)(((byte)(139)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DgwListaArticulos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.DgwListaArticulos.ColumnHeadersHeight = 35;
             this.DgwListaArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.DgwListaArticulos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
@@ -93,22 +94,22 @@
             this.DgwListaArticulos.MultiSelect = false;
             this.DgwListaArticulos.Name = "DgwListaArticulos";
             this.DgwListaArticulos.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(140)))), ((int)(((byte)(171)))));
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(111)))), ((int)(((byte)(140)))), ((int)(((byte)(139)))));
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DgwListaArticulos.RowHeadersDefaultCellStyle = dataGridViewCellStyle14;
-            dataGridViewCellStyle15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(140)))), ((int)(((byte)(171)))));
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(111)))), ((int)(((byte)(140)))), ((int)(((byte)(139)))));
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.White;
-            this.DgwListaArticulos.RowsDefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(140)))), ((int)(((byte)(171)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(111)))), ((int)(((byte)(140)))), ((int)(((byte)(139)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DgwListaArticulos.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(140)))), ((int)(((byte)(171)))));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(111)))), ((int)(((byte)(140)))), ((int)(((byte)(139)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
+            this.DgwListaArticulos.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.DgwListaArticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DgwListaArticulos.Size = new System.Drawing.Size(689, 272);
+            this.DgwListaArticulos.Size = new System.Drawing.Size(745, 272);
             this.DgwListaArticulos.TabIndex = 0;
             this.DgwListaArticulos.SelectionChanged += new System.EventHandler(this.DgwListaArticulos_SelectionChanged);
             // 
@@ -119,7 +120,7 @@
             this.CbxCampo.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.CbxCampo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CbxCampo.FormattingEnabled = true;
-            this.CbxCampo.Location = new System.Drawing.Point(991, 88);
+            this.CbxCampo.Location = new System.Drawing.Point(1086, 86);
             this.CbxCampo.Name = "CbxCampo";
             this.CbxCampo.Size = new System.Drawing.Size(121, 23);
             this.CbxCampo.TabIndex = 2;
@@ -129,10 +130,10 @@
             // 
             this.LblCampo.AutoSize = true;
             this.LblCampo.BackColor = System.Drawing.Color.Transparent;
-            this.LblCampo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.LblCampo.Location = new System.Drawing.Point(909, 88);
+            this.LblCampo.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblCampo.Location = new System.Drawing.Point(999, 88);
             this.LblCampo.Name = "LblCampo";
-            this.LblCampo.Size = new System.Drawing.Size(62, 20);
+            this.LblCampo.Size = new System.Drawing.Size(70, 21);
             this.LblCampo.TabIndex = 9;
             this.LblCampo.Text = "Campo";
             // 
@@ -140,10 +141,10 @@
             // 
             this.LblCriterio.AutoSize = true;
             this.LblCriterio.BackColor = System.Drawing.Color.Transparent;
-            this.LblCriterio.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.LblCriterio.Location = new System.Drawing.Point(909, 126);
+            this.LblCriterio.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblCriterio.Location = new System.Drawing.Point(999, 130);
             this.LblCriterio.Name = "LblCriterio";
-            this.LblCriterio.Size = new System.Drawing.Size(64, 20);
+            this.LblCriterio.Size = new System.Drawing.Size(66, 21);
             this.LblCriterio.TabIndex = 10;
             this.LblCriterio.Text = "Criterio";
             // 
@@ -153,7 +154,7 @@
             this.CbxCriterio.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.CbxCriterio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CbxCriterio.FormattingEnabled = true;
-            this.CbxCriterio.Location = new System.Drawing.Point(991, 126);
+            this.CbxCriterio.Location = new System.Drawing.Point(1086, 126);
             this.CbxCriterio.Name = "CbxCriterio";
             this.CbxCriterio.Size = new System.Drawing.Size(121, 23);
             this.CbxCriterio.TabIndex = 3;
@@ -182,7 +183,7 @@
             this.Header.Dock = System.Windows.Forms.DockStyle.Top;
             this.Header.Location = new System.Drawing.Point(0, 0);
             this.Header.Name = "Header";
-            this.Header.Size = new System.Drawing.Size(1145, 66);
+            this.Header.Size = new System.Drawing.Size(1255, 66);
             this.Header.TabIndex = 0;
             // 
             // lblTitulo
@@ -293,11 +294,11 @@
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label2.Location = new System.Drawing.Point(816, 69);
+            this.label2.Location = new System.Drawing.Point(907, 69);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(87, 20);
+            this.label2.Size = new System.Drawing.Size(86, 21);
             this.label2.TabIndex = 19;
             this.label2.Text = "Filtrar por:";
             // 
@@ -307,9 +308,9 @@
             this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBuscar.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBuscar.ForeColor = System.Drawing.Color.Transparent;
-            this.btnBuscar.Location = new System.Drawing.Point(722, 114);
+            this.btnBuscar.Location = new System.Drawing.Point(704, 114);
             this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(75, 37);
+            this.btnBuscar.Size = new System.Drawing.Size(88, 35);
             this.btnBuscar.TabIndex = 5;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = false;
@@ -336,7 +337,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(913, 165);
+            this.pictureBox1.Location = new System.Drawing.Point(987, 165);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(220, 220);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -346,7 +347,8 @@
             // BtnImagenanterior
             // 
             this.BtnImagenanterior.BackColor = System.Drawing.Color.Transparent;
-            this.BtnImagenanterior.Location = new System.Drawing.Point(913, 414);
+            this.BtnImagenanterior.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnImagenanterior.Location = new System.Drawing.Point(987, 414);
             this.BtnImagenanterior.Name = "BtnImagenanterior";
             this.BtnImagenanterior.Size = new System.Drawing.Size(92, 23);
             this.BtnImagenanterior.TabIndex = 6;
@@ -359,7 +361,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(92)))), ((int)(((byte)(118)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1145, 468);
+            this.ClientSize = new System.Drawing.Size(1255, 468);
             this.Controls.Add(this.BtnImagenanterior);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.txtFiltroAvanzado);
@@ -377,8 +379,8 @@
             this.Controls.Add(this.DgwListaArticulos);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.MaximumSize = new System.Drawing.Size(1161, 507);
-            this.MinimumSize = new System.Drawing.Size(1161, 507);
+            this.MaximumSize = new System.Drawing.Size(1271, 507);
+            this.MinimumSize = new System.Drawing.Size(1271, 507);
             this.Name = "Ventana";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Aplicacion";
