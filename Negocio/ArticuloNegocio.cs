@@ -94,8 +94,6 @@ namespace negocio
                 datos.cerrarConexion();
             }
         }
-
-
         public void agregar(Articulo nuevo_articulo)
         {
             AccesoDatos datos = new AccesoDatos();
@@ -143,10 +141,10 @@ namespace negocio
         }
         public void Modificar (Articulo articulo) 
         {
-            AccesoDatos datos = new AccesoDatos (); 
+            AccesoDatos datos = new AccesoDatos ();
             try
             {
-                datos.setConsulta("UPDATE ARTICULOS set Codigo = @codigo, Nombre = @nombre, Descripcion = @descripcion,idMarca = @marca,idCategoria = @categoria ,Precio = @precio where id = @id");
+                datos.setConsulta("UPDATE ARTICULOS set Codigo = @codigo, Nombre = @nombre, Descripcion = @descripcion,idMarca = @marca,idCategoria = @categoria ,Precio = @precio where id = @id UPDATE IMAGENES SET ImagenUrl = '" + articulo.Imagen.ImagenUrl + "' where IdArticulo = @id");
                 datos.setParametro("@id", articulo.ID);
                 datos.setParametro("@codigo", articulo.Codigo);
                 datos.setParametro("@nombre", articulo.Nombre);
@@ -175,13 +173,12 @@ namespace negocio
             try
             {
                 AccesoDatos datos = new AccesoDatos();
-                datos.setConsulta("DELETE FROM ARTICULOS WHERE Id = @Id");
+                datos.setConsulta("DELETE FROM ARTICULOS WHERE Id = @Id DELETE FROM IMAGENES WHERE IdArticulo = @Id");
                 datos.setParametro("@Id", id);
                 datos.ejecutarAccion();
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
         }
@@ -311,6 +308,12 @@ namespace negocio
 
                 throw ex;
             }        
+        }
+        public void resetear_ids()
+        {
+            AccesoDatos datos = new AccesoDatos();
+            datos.setConsulta("DECLARE @UltimoValor INT SELECT @UltimoValor = MAX(Id) FROM Articulos DBCC CHECKIDENT ([Articulos], RESEED, @UltimoValor)");
+            datos.ejecutarAccion();
         }
     }    
 }

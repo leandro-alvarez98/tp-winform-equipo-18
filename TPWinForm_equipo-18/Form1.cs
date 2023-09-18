@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using negocio;
 using System.Security.Cryptography;
+using System.IO;
 
 namespace TPWinForm_equipo_18
 {
@@ -106,6 +107,7 @@ namespace TPWinForm_equipo_18
         private void BtnEliminar_Click(object sender, EventArgs e)
         {
             ArticuloNegocio negocio = new ArticuloNegocio();
+
             Articulo articulo_a_eliminar = new Articulo();
             try
             {
@@ -114,6 +116,7 @@ namespace TPWinForm_equipo_18
                 {
                     articulo_a_eliminar = (Articulo)DgwListaArticulos.CurrentRow.DataBoundItem;
                     negocio.Eliminar(articulo_a_eliminar.ID);
+                    negocio.resetear_ids();
                     cargar_Componentes();
                 }
 
@@ -180,6 +183,9 @@ namespace TPWinForm_equipo_18
                 {
                     BtnCambiarImagen.Enabled = false;
                     BtnImagenanterior.Enabled = false;
+                    BtnAgregar.Enabled = false;
+                    BtnModificar.Enabled = false;
+                    BtnEliminar.Enabled = false;
                 }
             }
             catch (Exception ex)

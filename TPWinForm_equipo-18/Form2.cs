@@ -36,12 +36,11 @@ namespace TPWinForm_equipo_18
             this.Close();
         }
 
-
         //mapea lo que hay en el formulario al objeto al momento de aceptar la modificacion o el agregado  
         private void BtnAgregar_Click(object sender, EventArgs e)
         {
             ArticuloNegocio negocio = new ArticuloNegocio();
-            bool Flag = true;
+            
 
             try
             {
@@ -59,9 +58,12 @@ namespace TPWinForm_equipo_18
                 articulo.Marca = (Marca)CbxMarca.SelectedItem;
                 if (TxtPrecio.Text != null)
                     articulo.Precio = decimal.Parse(TxtPrecio.Text);
+                articulo.Imagen = new Imagen();
                 if(txtbxUrlImagen != null)
-                articulo.Imagenes.Add(txtbxUrlImagen.Text);
-                
+                {
+                    articulo.Imagenes.Add(txtbxUrlImagen.Text);
+                    articulo.Imagen.ImagenUrl = txtbxUrlImagen.Text;
+                }
 
                 if (articulo.ID != 0)
                 {
@@ -87,8 +89,6 @@ namespace TPWinForm_equipo_18
                 Lbl_error_precio.Text = "Por favor, Cargar solo numeros ";  
                 Lbl_error_precio.Visible = true;
             }
-              
-
         }
 
         //ventana del segundo formulario al cargar/ modificar
@@ -113,7 +113,7 @@ namespace TPWinForm_equipo_18
                     TxtPrecio.Text = articulo.Precio.ToString();
                     CbxMarca.SelectedValue = articulo.Marca.Id;
                     CbxCategoria.SelectedValue = articulo.Categoria.Id;
-                    txtbxUrlImagen.Text = articulo.Imagen.ToString();
+                    txtbxUrlImagen.Text = articulo.Imagenes.First();
                     TxtDescripcion.Text = articulo.Descripcion;
                     cargar_imagen(txtbxUrlImagen.Text);
                 }
@@ -124,8 +124,6 @@ namespace TPWinForm_equipo_18
                 MessageBox.Show(ex.ToString());
             }
         }
-
-
         private void txtbxUrlImagen_Leave(object sender, EventArgs e)
         {
             cargar_imagen(txtbxUrlImagen.Text);
@@ -141,12 +139,10 @@ namespace TPWinForm_equipo_18
                 cargar_predeterminada();
             }
         }
-
         private void cargar_predeterminada()
         {
             PbxImagen.Load("https://www.coalitionrc.com/wp-content/uploads/2017/01/placeholder.jpg");
         }
-
         private void copiar_imagen_localmente()
         {
             try
@@ -156,11 +152,10 @@ namespace TPWinForm_equipo_18
             }
             catch (System.IO.IOException )
             {
-                MessageBox.Show("ya hay un achivo con la misma imagen, elija otra por favor :)");
+                MessageBox.Show("Ya hay un achivo con la misma imagen, elija otra por favor :)");
                 throw;
             }
         }
-
         private void BtnCargarImagen_Click(object sender, EventArgs e)
         {
             archivo = new OpenFileDialog();

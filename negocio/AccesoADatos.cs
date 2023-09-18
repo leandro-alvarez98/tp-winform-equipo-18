@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace negocio
 {
-    internal class AccesoDatos
+    public class AccesoDatos
     {
         private SqlConnection conexion;
         private SqlCommand comando;
@@ -59,6 +59,7 @@ namespace negocio
         {
             comando.Parameters.AddWithValue(nombre, valor);
         }
+        
         public void cerrarConexion()
         {
             if (lector != null)
