@@ -183,7 +183,6 @@ namespace TPWinForm_equipo_18
                 {
                     BtnCambiarImagen.Enabled = false;
                     BtnImagenanterior.Enabled = false;
-                    BtnAgregar.Enabled = false;
                     BtnModificar.Enabled = false;
                     BtnEliminar.Enabled = false;
                 }
@@ -329,8 +328,14 @@ namespace TPWinForm_equipo_18
 
             }
         }
-        
 
+        private void BtnAddImagen_Click(object sender, EventArgs e)
+        {
+            Articulo articulo_seleccionado;
+            articulo_seleccionado = (Articulo)DgwListaArticulos.CurrentRow.DataBoundItem;
 
+            VentanaAñadirImagen nueva_imagen = new VentanaAñadirImagen(articulo_seleccionado);
+            nueva_imagen.ShowDialog();
+        }
     }
 }

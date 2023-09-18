@@ -40,53 +40,82 @@ namespace TPWinForm_equipo_18
         private void BtnAgregar_Click(object sender, EventArgs e)
         {
             ArticuloNegocio negocio = new ArticuloNegocio();
-            
-
+            bool campos_incompletos = false;
             try
             {
                 if (articulo == null)
                     articulo = new Articulo();
+
                 if (articulo.Imagenes == null)
                     articulo.Imagenes = new List<string>();
+
                 if (TxtCodigo.Text != null)
-                    articulo.Codigo = TxtCodigo.Text;
+                    if (!string.IsNullOrEmpty(TxtCodigo.Text))
+                        articulo.Codigo = TxtCodigo.Text;
+                    else
+                        campos_incompletos = true;
+                    
                 if (TxtNombre.Text != null)
-                    articulo.Nombre = TxtNombre.Text;
+                    if (!string.IsNullOrEmpty(TxtNombre.Text))
+                        articulo.Nombre = TxtNombre.Text;
+                    else
+                        campos_incompletos = true;
+
                 if (TxtDescripcion.Text != null)
-                    articulo.Descripcion = TxtDescripcion.Text;            
+                    if (!string.IsNullOrEmpty(TxtDescripcion.Text))
+                        articulo.Descripcion = TxtCodigo.Text;
+                    else
+                        campos_incompletos = true;
+
                 articulo.Categoria = (Categoria)CbxCategoria.SelectedItem;
+
                 articulo.Marca = (Marca)CbxMarca.SelectedItem;
+
                 if (TxtPrecio.Text != null)
                     articulo.Precio = decimal.Parse(TxtPrecio.Text);
+
                 articulo.Imagen = new Imagen();
                 if(txtbxUrlImagen != null)
                 {
-                    articulo.Imagenes.Add(txtbxUrlImagen.Text);
-                    articulo.Imagen.ImagenUrl = txtbxUrlImagen.Text;
+                    if(!string.IsNullOrEmpty(txtbxUrlImagen.Text))
+                    {
+                        articulo.Imagenes.Add(txtbxUrlImagen.Text);
+                        articulo.Imagen.ImagenUrl = txtbxUrlImagen.Text;
+                    }
+                    else
+                        campos_incompletos = true;
                 }
 
-                if (articulo.ID != 0)
+                if(campos_incompletos)
                 {
-                    negocio.Modificar(articulo);
-                    MessageBox.Show("Modificado correctamente");
+                    MessageBox.Show("Los campos no pueden estar vacíos!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    TxtCodigo.Focus();
                 }
                 else
                 {
-                    negocio.agregar(articulo);
-                    MessageBox.Show("Articulo añadido correctamente!");
-                }
+                    if (articulo.ID != 0)
+                    {
+                        negocio.Modificar(articulo);
+                        MessageBox.Show("Modificado correctamente");
+                    }
+                    else
+                    {
+                        negocio.agregar(articulo);
+                        MessageBox.Show("Articulo añadido correctamente!");
+                    }
                
-                //distingue si las guarda en la base de datos o localmente
-                if (archivo != null && !(txtbxUrlImagen.Text.ToUpper().Contains("HTTP")))
-                {                 
-                    copiar_imagen_localmente();
-                }
+                    //distingue si las guarda en la base de datos o localmente
+                    if (archivo != null && !(txtbxUrlImagen.Text.ToUpper().Contains("HTTP")))
+                    {                 
+                        copiar_imagen_localmente();
+                    }
 
-                Close();
+                    Close();
+                }
             }
             catch (FormatException )
             {
-                Lbl_error_precio.Text = "Por favor, Cargar solo numeros ";  
+                Lbl_error_precio.Text = "Por favor, cargar sólo numeros";  
                 Lbl_error_precio.Visible = true;
             }
         }
@@ -152,7 +181,7 @@ namespace TPWinForm_equipo_18
             }
             catch (System.IO.IOException )
             {
-                MessageBox.Show("Ya hay un achivo con la misma imagen, elija otra por favor :)");
+                MessageBox.Show("Ya hay un archivo con la misma imagen, elija otra por favor :)");
                 throw;
             }
         }

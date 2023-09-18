@@ -140,6 +140,7 @@
             this.TxtCodigo.Name = "TxtCodigo";
             this.TxtCodigo.Size = new System.Drawing.Size(294, 27);
             this.TxtCodigo.TabIndex = 0;
+            this.TxtCodigo.UseWaitCursor = true;
             // 
             // TxtDescripcion
             // 
